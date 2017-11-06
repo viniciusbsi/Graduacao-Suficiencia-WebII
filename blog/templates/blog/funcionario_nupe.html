@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="ui centered grid">
+        <div class="four wide column">
+            <button class="massive ui button"><a href="{% url 'blog.views.cadastra_permissao' %}">Criar Permissão</a>
+            </button>
+        </div>
+        <div class="four wide column">
+            <button class="massive ui button"><a href="{% url 'blog.views.lista_permissoes' %}">Histórico</a></button>
+        </div>
+        <div class="four wide column">
+            <a href="{% url 'blog.views.cadatra_aluno' %}">Aluno</a></br>
+            <a href="{% url 'blog.views.cadatra_funcionario_nupe' %}">Funcionario Nupe</a></br>
+            <a href="{% url 'blog.views.cadatra_funcionario_portaria' %}">Funcionario Portaria</a>
+        </div>
+    </div>
+{% endblock content %}

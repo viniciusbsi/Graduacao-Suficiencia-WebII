@@ -1,0 +1,85 @@
+{% load staticfiles %}
+<html>
+<head>
+    <title>Django Girls blog</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Semantic-UI-1.0/dist/semantic.min.css' %}">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="{% static 'Semantic-UI-1.0/dist/semantic.min.js' %}"></script>
+    <script src="{% static 'Semantic-UI-1.0/dist/semantic.js' %}"></script>
+    <script src="{% static 'js/scp.js' %}"></script>
+
+</head>
+
+<body>
+<header>
+    <div class="ui fluid">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <div class="one wide column"></div>
+                <div class="one wide column">
+                    <a href="{% url 'blog.views.login_verifica_grupo' %}"><img
+                            src="{% static 'images/logo-ifc.png' %}"/></a>
+                </div>
+                <div class="ten wide column">
+                    <br/>
+                    <h2 class="ui header red">
+                        {#                        <a href="{% url 'issem:index' %}" class="issem-title">ISSEM</a>#}
+                        <div class="sub header">
+                            SISTEMA DE CONTROLE DE PERMANÊNCIA
+                        </div>
+                    </h2>
+                    <br/>
+                </div>
+                <div class="three wide column right aligned">
+                    <div class="ui grid">
+                        <div class="sixteen wide column">
+                            {% if user.is_authenticated %}
+                                <div class="ui pointing dropdown link item">
+                                    <i class="ui right large user icon"></i>
+                                    {{ user.username }}
+                                    <i class="angle down icon"></i>
+                                    <div class="menu">
+                                        <a href="" class="item">
+                                            <i class="user icon"></i>
+                                            Meu Perfil
+                                        </a>
+                                        <a href="{% url 'django.contrib.auth.views.logout' %}" class="item">
+                                            <i class="sign out icon"></i>
+                                            Sair
+                                        </a>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><span
+                                        class="glyphicon glyphicon-lock"></span></a>
+                            {% endif %}
+                            {#			<h1><a href="{% url 'blog.views.post_list' %}">Django Girls Blog</a></h1>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="ui container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</section>
+
+<footer class="ui inverted vertical segment footer">
+    <div class="ui centered grid">
+        <div class="sixteen wide column center aligned">
+            GOsto muito quando funciona
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
