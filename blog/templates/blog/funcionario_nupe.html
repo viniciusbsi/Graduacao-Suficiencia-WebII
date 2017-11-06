@@ -10,9 +10,27 @@
             <button class="massive ui button"><a href="{% url 'blog.views.lista_permissoes' %}">Histórico</a></button>
         </div>
         <div class="four wide column">
-            <a href="{% url 'blog.views.cadatra_aluno' %}">Aluno</a></br>
-            <a href="{% url 'blog.views.cadatra_funcionario_nupe' %}">Funcionario Nupe</a></br>
-            <a href="{% url 'blog.views.cadatra_funcionario_portaria' %}">Funcionario Portaria</a>
+            <div class="ui menu">
+                <div class="ui dropdown fluid selection issem-dropdown">
+                    <h3 class="ui header"><i class="users icon"></i> Pessoas</h3>
+
+                    {# DROPDOWN #}
+                    <div class="menu">
+                        <a href="{% url 'blog.views.cadatra_aluno' %}">Aluno</a></br>
+                        <a href="{% url 'blog.views.cadatra_funcionario_nupe' %}">Funcionario Nupe</a></br>
+                        <a href="{% url 'blog.views.cadatra_funcionario_portaria' %}">Funcionario Portaria</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ui pointing dropdown link item">
+                <i class="ui right large user icon"></i>
+                <i class="angle down icon"></i>
+                <div class="ui menu">
+                    <a href="{% url 'blog.views.cadatra_aluno' %}">Aluno</a></br>
+                    <a href="{% url 'blog.views.cadatra_funcionario_nupe' %}">Funcionario Nupe</a></br>
+                    <a href="{% url 'blog.views.cadatra_funcionario_portaria' %}">Funcionario Portaria</a>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock content %}

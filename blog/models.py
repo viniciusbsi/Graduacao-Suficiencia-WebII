@@ -23,7 +23,6 @@ class Permissao(models.Model):
     descricao = models.CharField(max_length=200)
     hora_solicitada = models.TimeField()
     funcionario_nupe = models.ForeignKey('blog.Funcionario', related_name='Permissao_FuncionarioNupe')
-    funcionario_portaria = models.ForeignKey('blog.Funcionario', related_name='Permissao_FuncionarioPortaria')
     aluno = models.ForeignKey('blog.Aluno', related_name='Permissao_Aluno')
 
     def __unicode__(self):
