@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="ui centered grid">
+        <div class="fourteen wide column">
+            <form method="POST" action="{% url 'blog.views.cadatra_funcionario_portaria' %}">
+                {% csrf_token %}
+                {{ form_pessoa.as_p }}
+                {{ form_senha.as_p }}
+                {{ form.as_p }}
+                <input type="submit" value="Cadastrar">
+            </form>
+        </div>
+    </div>
+{% endblock content     %}
