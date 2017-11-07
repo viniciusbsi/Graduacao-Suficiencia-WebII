@@ -1,0 +1,21 @@
+header {
+    min-height: 15% !important;
+    padding-top: 2%;
+    border-bottom: 1px solid #d4d4d4;
+    background-color: #f8f8f8;
+}
+
+nav {
+    min-height: 7% !important;
+}
+
+section {
+    min-height: 74% !important;
+    padding-top: 8%; !important;
+}
+
+footer {
+    min-height: 11% !important;
+    padding-top: 1% !important;
+}
+

@@ -1,0 +1,92 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="ui centered grid">
+        <div class="ui row">
+            <div class="twelve wide column">
+                <div class="ui segment">
+                    <form class="ui form" method="POST" action="{% url 'blog.views.cadatra_funcionario' %}">
+                        {% csrf_token %}
+                        <div class="fields">
+                            <div class="four wide field">
+                                <label>Nome:</label>
+                                {{ form_pessoa.first_name }}
+                                {% if form_pessoa.first_name.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_pessoa.first_name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="four wide field">
+                                <label>Sobrenome:</label>
+                                {{ form_pessoa.last_name }}
+                                {% if form_pessoa.last_name.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_pessoa.last_name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="four wide field">
+                                <label>E-mail:</label>
+                                {{ form_pessoa.email }}
+                                {% if form_pessoa.email.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_pessoa.email.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="four wide field">
+                                <label>Função:</label>
+                                {{ form_pessoa.groups }}
+                                {% if form_pessoa.groups.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_pessoa.groups.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="four wide field">
+                                <label>Matrícula:</label>
+                                {{ form.matricula }}
+                                {% if form.matricula.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form.matricula.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="four wide field">
+                                <label>Login:</label>
+                                {{ form_pessoa.username }}
+                                {% if form_pessoa.username.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_pessoa.username.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="four wide field">
+                                <label>Senha:</label>
+                                {{ form_senha.password }}
+                                {% if form_senha.password.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_senha.password.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="four wide field">
+                                <label>Senha novamente:</label>
+                                {{ form_senha.password_checker }}
+                                {% if form_senha.password_checker.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_senha.password_checker.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <input type="submit" value="Cadastrar" class="ui button submit-row">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
