@@ -2,20 +2,21 @@ from django.db import models
 
 
 class Aluno(models.Model):
-    pessoa_aluno = models.ForeignKey('auth.User')
     matricula = models.IntegerField()
-    nome_pai = models.CharField(max_length=200)
+    nome = models.CharField(max_length=200)
+    nome_pai = models.CharField(max_length=200, null=True, blank=True)
     nome_mae = models.CharField(max_length=200)
-    telefone_aluno = models.CharField(max_length=16)
+    email = models.EmailField()
+    telefone_aluno = models.CharField(max_length=16, null=True, blank=True)
     telefone_responsavel = models.CharField(max_length=16)
     curso = models.ForeignKey('blog.Curso', related_name='Aluno_Curso')
     turma = models.ForeignKey('blog.Turma', related_name='Aluno_turma')
 
     def __unicode__(self):
-        return self.pessoa_aluno.get_full_name()
+        return self.nome
 
     def __str__(self):
-        return self.pessoa_aluno.get_full_name()
+        return self.nome
 
 
 class Permissao(models.Model):
@@ -24,6 +25,8 @@ class Permissao(models.Model):
     hora_solicitada = models.TimeField()
     funcionario_nupe = models.ForeignKey('blog.Funcionario', related_name='Permissao_FuncionarioNupe')
     aluno = models.ForeignKey('blog.Aluno', related_name='Permissao_Aluno')
+    verificado_professor = models.ForeignKey('blog.Funcionario', related_name='Permissao_Valida_Professor')
+    verificado_portaria = models.ForeignKey('blog.Funcionario', related_name='Permissao_Valida_Portaria')
 
     def __unicode__(self):
         return self.aluno

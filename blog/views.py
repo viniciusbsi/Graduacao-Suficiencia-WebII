@@ -24,14 +24,13 @@ def login_verifica_grupo(request):
         if request.user.groups.get().name == "Nupe":
             return render(request, 'blog/funcionario_nupe.html')
 
-        if request.user.groups.get().name == "Aluno":
-            return render(request, 'blog/aluno.html')
-
         if request.user.groups.get().name == "Portaria":
-            return render(request, 'blog/funcionario_portaria.html')
+            permissoes = Permissao.objects.all().order_by('data')
+            return render(request, 'blog/permissaoListaPortaria.html', {'permissoes': permissoes})
 
         if request.user.groups.get().name == "Professor":
-            return render(request, 'blog/professor.html')
+            permissoes = Permissao.objects.all().order_by('data')
+            return render(request, 'blog/permissaoListaProfessor.html', {'permissoes': permissoes})
 
     return render(request, 'registration/login.html')
 
@@ -46,6 +45,7 @@ def cadastra_permissao(request):
         form = PermissaoForm(request.POST)
         if form.is_valid():
             permissao = form.save(commit=False)
+            print (request.user.id)
             funcionario = Funcionario.objects.get(pessoa_funcionario=request.user.id)
             permissao.funcionario_nupe = funcionario
             permissao.data = date.today()
@@ -62,32 +62,23 @@ def lista_permissoes(request):
 
 
 @login_required
-def cadatra_aluno(request):
+def cadastra_aluno(request):
     if request.method == "POST":
         form = AlunoForm(request.POST)
-        form_pessoa = PessoaForm(request.POST)
-        form_senha = PessoaPasswordForm(request.POST)
-        if form.is_valid() and form_pessoa.is_valid():
-            form_pessoa.save()
-            user = User.objects.last()
-            grupo = Group.objects.get(name="Nupe")
-            user.groups.add(grupo)
-            user.set_password(request.POST['password'])
-            user.save()
-
-            obj = form.save(commit=False)
-            obj.pessoa_aluno = User.objects.last()
-            obj.save()
+        if form.is_valid():
+            form.save()
             return redirect('blog.views.login_verifica_grupo')
+
+        else:
+            print (form.errors)
     else:
         form = AlunoForm()
         form_pessoa = PessoaForm()
-        form_senha = PessoaPasswordForm()
-    return render(request, 'blog/alunoAdd.html', {'form': form, 'form_pessoa': form_pessoa, 'form_senha': form_senha})
+    return render(request, 'blog/alunoAdd.html', {'form': form})
 
 
 @login_required
-def cadatra_funcionario(request):
+def cadastra_funcionario(request):
     if request.method == "POST":
         form = FuncionarioForm(request.POST)
         form_pessoa = PessoaForm(request.POST)
@@ -95,13 +86,17 @@ def cadatra_funcionario(request):
         if form.is_valid() and form_pessoa.is_valid():
             form_pessoa.save()
             user = User.objects.last()
+            grupo = Group.objects.get(pk=request.POST['groups'])
+            user.groups.add(grupo)
             user.set_password(request.POST['password'])
             user.save()
+
             obj = form.save(commit=False)
             obj.pessoa_funcionario = User.objects.last()
             obj.save()
             return redirect('blog.views.login_verifica_grupo')
         else:
+            print(form_pessoa.errors)
             print(form_pessoa.errors)
             print(form.errors)
     else:
@@ -111,61 +106,12 @@ def cadatra_funcionario(request):
     return render(request, 'blog/funcionarioAdd.html', {'form': form, 'form_pessoa': form_pessoa, 'form_senha': form_senha})
 
 
-# @login_required
-# def cadatra_funcionario_portaria(request):
-#     if request.method == "POST":
-#         form = FuncionarioForm(request.POST)
-#         form_pessoa = PessoaForm(request.POST)
-#         form_senha = PessoaPasswordForm(request.POST)
-#         if form.is_valid() and form_pessoa.is_valid() and form_senha.is_valid():
-#             form_pessoa.save()
-#             user = User.objects.last()
-#             grupo = Group.objects.get(name="Portaria")
-#             user.groups.add(grupo)
-#             user.set_password(request.POST['password'])
-#             user.save()
-#
-#             obj = form.save(commit=False)
-#             obj.pessoa_funcionario = User.objects.last()
-#             obj.save()
-#             return redirect('blog.views.login_verifica_grupo')
-#     else:
-#         form = FuncionarioForm()
-#         form_pessoa = PessoaForm()
-#         form_senha = PessoaPasswordForm()
-#     return render(request, 'blog/funcionarioPortariaAdd.html', {'form': form, 'form_pessoa': form_pessoa, 'form_senha': form_senha})
-#
-# @login_required
-# def cadatra_professor(request):
-#     if request.method == "POST":
-#         form = FuncionarioForm(request.POST)
-#         form_pessoa = PessoaForm(request.POST)
-#         form_senha = PessoaPasswordForm(request.POST)
-#         if form.is_valid() and form_pessoa.is_valid():
-#             form_pessoa.save()
-#             user = User.objects.last()
-#             grupo = Group.objects.get(name="Professor")
-#             user.groups.add(grupo)
-#             user.set_password(request.POST['password'])
-#             user.save()
-#
-#             obj = form.save(commit=False)
-#             obj.pessoa_funcionario = User.objects.last()
-#             obj.save()
-#             return redirect('blog.views.login_verifica_grupo')
-#     else:
-#         form = FuncionarioForm()
-#         form_pessoa = PessoaForm()
-#         form_senha = PessoaPasswordForm()
-#     return render(request, 'blog/funcionarioProfessorAdd.html', {'form': form, 'form_pessoa': form_pessoa, 'form_senha': form_senha})
-
-
 @login_required
 def GeraComprovantePDF(request, id=None):
 
     permissao = Permissao.objects.get(pk=id)
-    nome = "static/media/comprovantes/" + str(permissao.aluno.pessoa_aluno.get_full_name()) + ".pdf"
-    doc = SimpleDocTemplate("blog/static/media/comprovantes/" + str(permissao.aluno.pessoa_aluno.get_full_name()) + ".pdf", pagesize=letter, rightMargin=72,
+    nome = "static/media/comprovantes/" + str(permissao.aluno.nome) + ".pdf"
+    doc = SimpleDocTemplate("blog/static/media/comprovantes/" + str(permissao.aluno.nome) + ".pdf", pagesize=letter, rightMargin=72,
                             leftMargin=72, topMargin=00, bottomMargin=18)
 
     Story = []
@@ -174,16 +120,30 @@ def GeraComprovantePDF(request, id=None):
     styles.add(ParagraphStyle(name='inicial', alignment=TA_JUSTIFY, spaceBefore=50))
     styles.add(ParagraphStyle(name='linhas', alignment=TA_JUSTIFY, spaceBefore=20))
 
-    Story.append(Paragraph(u"Eu <b>%s</b> na qualidade de <b>%s</b> do Núcleo pedagógico, apresento justificativa "
+    Story.append(Paragraph(u"Eu <b>%s</b> na qualidade de servidor do Núcleo pedagógico, apresento justificativa "
                            u"para o discente <b>%s</b> para entrada/saída sob justificativa de <b>%s</b> na data de "
-                           u"<b>%s</b> às <b>%s</b>. Declaro que a portaria encontra-se sob responsabilidade de <b>%s</b>" %
-                           (permissao.funcionario_nupe.pessoa_funcionario.get_full_name(),
-                            permissao.funcionario_nupe.funcao, permissao.aluno.pessoa_aluno.get_full_name(),
-                            permissao.descricao, str(permissao.data), permissao.hora_solicitada,
-                            permissao.funcionario_portaria.pessoa_funcionario.get_full_name()), styles["inicial"]))
+                           u"<b>%s</b> às <b>%s</b>" % (permissao.funcionario_nupe.pessoa_funcionario.get_full_name(),permissao.aluno.nome,
+                            permissao.descricao, str(permissao.data), permissao.hora_solicitada), styles["inicial"]))
     Story.append(Spacer(1, 12))
     doc.build(Story)
     return redirect("/" + nome)
+
+
+@login_required
+def ValidaPermissaoProfessor(request, id=None):
+    permissao = Permissao.objects.get(pk=id)
+    permissao.verificado_professor = Funcionario.objects.get(pessoa_funcionario=request.user.id)
+    permissao.save()
+    permissoes = Permissao.objects.all()
+    return render(request, 'blog/permissaoListaProfessor.html', {'permissoes': permissoes})
+
+
+@login_required
+def ValidaPermissaoPortaria(request, id=None):
+    permissao = Permissao.objects.get(pk=id)
+    permissao.verificado_portaria = Funcionario.objects.get(pessoa_funcionario=request.user.id)
+    permissao.save()
+    return render(request, 'blog/permissaoListaPortaria.html')
 
 # @login_required
 # def post_edit(request, pk):

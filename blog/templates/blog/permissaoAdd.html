@@ -2,12 +2,30 @@
 
 {% block content %}
     <div class="ui centered grid">
-        <div class="fourteen wide column">
-            <form method="POST" action="{% url 'blog.views.cadastra_permissao' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Cadastrar">
-            </form>
+        <div class="ui row">
+            <div class="twelve wide column">
+                <div class="ui segment">
+                    <form method="POST" class="ui form" action="{% url 'blog.views.cadastra_permissao' %}">
+                        {% csrf_token %}
+                        <div class="fields">
+                            <div class="two wide field"></div>
+                            <div class="four wide field">
+                                <label>Descrição:</label>
+                                {{ form.descricao }}
+                            </div>
+                            <div class="four wide field">
+                                <label>Hora solicitada pelo aluno:</label>
+                                {{ form.hora_solicitada }}
+                            </div>
+                            <div class="four wide field">
+                                <label>Aluno:</label>
+                                {{ form.aluno }}
+                            </div>
+                        </div>
+                        <input type="submit" class="ui button green submit-row" value="Cadastrar">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock content     %}

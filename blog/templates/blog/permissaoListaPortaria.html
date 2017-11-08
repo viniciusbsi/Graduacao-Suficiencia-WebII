@@ -10,8 +10,7 @@
                         <th>Aluno</th>
                         <th>Funcionario Nupe</th>
                         <th>Hora</th>
-                        <th>Professor</th>
-                        <th>Portaria</th>
+                        <th>Verificado pelo professor</th>
                         <th>Ações</th>
                     </tr>
                     </thead>
@@ -21,11 +20,11 @@
                             <td>{{ permissao.aluno }}</td>
                             <td>{{ permissao.funcionario_nupe }}</td>
                             <td>{{ permissao.hora_solicitada }}</td>
-                            <td>{{ permissao.verificado_professor }}</td>
-                            <td>{{ permissao.verificado_portaria }}</td>
+                            <td>{{ permissao.verficado_professor }}</td>
                             <td>
                                 <a target="_blank" href="{% url 'blog.views.GeraComprovantePDF' permissao.id%}" class="link">Gerar PDF</a></br>
-                                <a href="" class="link">Exibir detalhes</a>
+                                <a href="" class="link">Exibir detalhes</a></br>
+                                <a href="" class="link" href="{% url 'blog.views.ValidaPermissaoProfessor' permissao.id %}">Validar</a>
                             </td>
                         </tr>
                     {% endfor %}

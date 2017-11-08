@@ -51,11 +51,17 @@ class FuncionarioForm(forms.ModelForm):
 
 class PessoaForm(forms.ModelForm):
 
-        # groups = forms.ModelChoiceField(required=False,
-        #                                 empty_label='Selecione o grupo',
-        #                                 queryset=Group.objects.all(),
-        #                                 widget=forms.Select(attrs={"class": "ui fluid search selection dropdown", })
-        #                                 )
+    # groups = forms.ModelChoiceField(queryset=Group.objects.all().exclude(name='Aluno'), required=True)
+
+    class Meta:
+        model = User
+        fields = '__all__'
+        exclude = ['last_login', 'is_superuser', 'user_permissions', 'is_active', 'date_joined', 'is_staff', 'password']
+
+class AlunoPessoaForm(forms.ModelForm):
+
+    username = forms.CharField(required=False)
+    # groups = forms.ModelChoiceField(queryset=Group.objects.all().exclude(name='Aluno'), required=True)
 
     class Meta:
         model = User
