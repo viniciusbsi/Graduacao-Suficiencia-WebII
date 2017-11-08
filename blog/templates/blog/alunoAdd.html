@@ -1,107 +1,102 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="ui centered grid">
-        <div class="ui row">
-            <div class="twelve wide column">
-                <div class="ui segment">
-                    <form class="ui form" method="POST" action="{% url 'blog.views.cadastra_aluno' %}">
-                        {% csrf_token %}
-{#                        {{ form_pessoa.as_p }}#}
-{#                        {{ form }}#}
-{#                        {{ form_senha.as_p }}#}
-                        <div class="fields">
-                            <div class="eight wide field">
-                                <label>Nome:</label>
-                                {{ form.nome }}
-                                {% if form.nome.errors %}
-                                    <div class="ui pointing red basic label">
-                                        {{ form.nome.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="four wide field">
-                                <label>E-mail:</label>
-                                {{ form.email }}
-                                {% if form.email.errors %}
-                                    <div class="ui pointing red basic label">
-                                        {{ form.email.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="four wide field">
-                                <label>Matrícula:</label>
-                                {{ form.matricula }}
-                                {% if form.matricula.errors %}
-                                    <div class="ui pointing red basic label">
-                                        {{ form.matricula.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
+    <div class="twelve wide column">
+        <h1><i class="plus icon"></i> Cadastro de Aluno</h1>
+        <form class="ui segment form" method="POST" action="{% url 'blog.views.cadastra_aluno' %}">
+            {% csrf_token %}
+            <div class="fields">
+                <div class="eight wide field">
+                    <label>Nome:</label>
+                    {{ form.nome }}
+                    {% if form.nome.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.nome.errors }}
                         </div>
-                        <div class="fields">
-                            <div class="four wide field">
-                                <label>Nome pai:</label>
-                                {{ form.nome_pai }}
-                                {% if form.nome_pai.errors %}
-                                    <div class="ui pointing red basic label">
-                                        {{ form.nome_pai.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="four wide field">
-                                <label>Nome mãe:</label>
-                                {{ form.nome_mae }}
-                                {% if form.nome_mae.errors %}
-                                    <div class="ui pointing red basic label">
-                                        {{ form.nome_mae.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="four wide field">
-                                <label>Tel. Aluno:</label>
-                                {{ form.telefone_aluno }}
-                                {% if form.telefone_aluno.errors %}
-                                    <div class="ui pointing red basic label">
-                                        {{ form.telefone_aluno.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="four wide field">
-                                <label>Tel. responsável:</label>
-                                {{ form.telefone_responsavel }}
-                                {% if form.telefone_responsavel.errors %}
-                                    <div class="ui pointing red basic label">
-                                        {{ form.telefone_responsavel.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
+                    {% endif %}
+                </div>
+                <div class="four wide field">
+                    <label>E-mail:</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.email.errors }}
                         </div>
-                        <div class="fields">
-                            <div class="four wide field"></div>
-                            <div class="four wide field">
-                                <label>Curso:</label>
-                                {{ form.curso }}
-                                {% if form.curso.errors %}
-                                    <div class="ui pointing red basic label">
-                                        {{ form.curso.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="four wide field">
-                                <label>Turma:</label>
-                                {{ form.turma }}
-                                {% if form.turma.errors %}
-                                    <div class="ui pointing red basic label">
-                                        {{ form.turma.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
+                    {% endif %}
+                </div>
+                <div class="four wide field">
+                    <label>Matrícula:</label>
+                    {{ form.matricula }}
+                    {% if form.matricula.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.matricula.errors }}
                         </div>
-                        <input type="submit" value="Cadastrar" class="ui button submit-row">
-                    </form>
+                    {% endif %}
                 </div>
             </div>
-        </div>
+            <div class="fields">
+                <div class="four wide field">
+                    <label>Nome pai:</label>
+                    {{ form.nome_pai }}
+                    {% if form.nome_pai.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.nome_pai.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="four wide field">
+                    <label>Nome mãe:</label>
+                    {{ form.nome_mae }}
+                    {% if form.nome_mae.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.nome_mae.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="four wide field">
+                    <label>Tel. Aluno:</label>
+                    {{ form.telefone_aluno }}
+                    {% if form.telefone_aluno.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.telefone_aluno.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="four wide field">
+                    <label>Tel. responsável:</label>
+                    {{ form.telefone_responsavel }}
+                    {% if form.telefone_responsavel.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.telefone_responsavel.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="fields">
+                <div class="four wide field"></div>
+                <div class="four wide field">
+                    <label>Curso:</label>
+                    {{ form.curso }}
+                    {% if form.curso.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.curso.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="four wide field">
+                    <label>Turma:</label>
+                    {{ form.turma }}
+                    {% if form.turma.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.turma.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="ui two buttons">
+                <input class="ui button fluid" type="submit" value="Voltar">
+                <input class="ui button fluid positive" type="submit" value="Cadastrar">
+            </div>
+        </form>
     </div>
 {% endblock content %}

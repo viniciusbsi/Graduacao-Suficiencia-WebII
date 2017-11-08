@@ -1,23 +1,21 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="ui centered grid">
         <div class="four wide column">
-            <button class="massive ui button"><a href="{% url 'blog.views.cadastra_permissao' %}">Criar Permissão</a>
-            </button>
-        </div>
-        <div class="four wide column">
-            <button class="massive ui button"><a href="{% url 'blog.views.lista_permissoes' %}">Histórico</a></button>
-        </div>
-        <div class="four wide column">
-            <button class="button massive ui pointing dropdown link item">
-                <a href="">Cadastros</a>
-                <i class="angle down icon"></i>
-                <div class="ui menu">
-                    <a class="item" href="{% url 'blog.views.cadastra_aluno' %}">Aluno</a>
-                    <a class="item" href="{% url 'blog.views.cadastra_funcionario' %}">Funcionario</a>
+            <div class="ui row espaco">
+                <a href="{% url 'blog.views.cadastra_permissao' %}" class="massive ui green button fluid">Criar Permissão</a>
+            </div>
+            <div class="ui row espaco">
+                <a href="{% url 'blog.views.lista_permissoes' %}" class="massive ui green button fluid">Histórico</a>
+            </div>
+            <div class="ui row espaco">
+                <div class="ui green button massive ui pointing dropdown link item fluid">
+                    <div>Cadastros<i class="angle down icon"></i></div>
+                    <div class="ui menu">
+                        <a class="item" href="{% url 'blog.views.cadastra_aluno' %}">Aluno</a>
+                        <a class="item"  href="{% url 'blog.views.cadastra_funcionario' %}">Funcionario</a>
+                    </div>
                 </div>
-            </button>
+            </div>
         </div>
-    </div>
 {% endblock content %}

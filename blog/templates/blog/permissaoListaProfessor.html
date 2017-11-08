@@ -1,39 +1,37 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="ui centered grid">
-        <div class="ui row">
-            <div class="thirteen wide column">
-                <table class="ui celled table issem-table-form">
-                    <thead>
+    <div class="thirteen wide column">
+            <h1><i class="list icon"></i> Permissões</h1>
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Funcionario Nupe</th>
+                    <th>Hora</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for permissao in permissoes %}
                     <tr>
-                        <th>Aluno</th>
-                        <th>Funcionario Nupe</th>
-                        <th>Hora</th>
-                        <th>Ações</th>
+                        <td>{{ permissao.aluno }}</td>
+                        <td>{{ permissao.funcionario_nupe }}</td>
+                        <td>{{ permissao.hora_solicitada }}</td>
+                        <td>
+                            <a target="_blank" href="{% url 'blog.views.GeraComprovantePDF' permissao.id %}"
+                               class="link">Gerar PDF</a></br>
+                            <a href="" class="link">Exibir detalhes</a></br>
+                            {% if permissao.verificado_professor != 'None' %}
+                                Validado por <b>{{ permissao.verificado_professor }}</b>
+                            {% else %}
+                                <a href="{% url 'blog.views.ValidaPermissaoProfessor' permissao.id %}" class="link">Validar</a>
+                            {% endif %}
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {% for permissao in permissoes %}
-                        <tr>
-                            <td>{{ permissao.aluno }}</td>
-                            <td>{{ permissao.funcionario_nupe }}</td>
-                            <td>{{ permissao.hora_solicitada }}</td>
-                            <td>
-                                <a target="_blank" href="{% url 'blog.views.GeraComprovantePDF' permissao.id%}" class="link">Gerar PDF</a></br>
-                                <a href="" class="link">Exibir detalhes</a></br>
-                                {% if permissao.verificado_professor != 'None' %}
-                                    Validado por <b>{{ permissao.verificado_professor }}</b>
-                                {% else %}
-                                    <a href="{% url 'blog.views.ValidaPermissaoProfessor' permissao.id %}" class="link">Validar</a>
-                                {% endif %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                    <tfoot>
-                </table>
-            </div>
-        </div>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+            </table>
     </div>
 {% endblock content %}
