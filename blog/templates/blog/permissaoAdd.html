@@ -1,7 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="twelve wide column">
+    <div class="two wide column"></div>
+    <div class="ten wide column">
+        <div class="espaco"></div>
         <h1><i class="list icon"></i> Criar Permissão</h1>
         <form class="ui form segment" method="POST" action="{% url 'blog.views.cadastra_permissao' %}">
             {% csrf_token %}
@@ -9,20 +11,36 @@
                 <div class="six wide field">
                     <label>Descrição:</label>
                     {{ form.descricao }}
+                    {% if form.descricao.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.descricao.errors }}
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="five wide field">
                     <label>Hora solicitada pelo aluno:</label>
                     {{ form.hora_solicitada }}
+                    {% if form.hora_solicitada.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.hora_solicitada.errors }}
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="six wide field">
                     <label>Aluno:</label>
                     {{ form.aluno }}
+                    {% if form.aluno.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.aluno.errors }}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="ui two buttons">
-                <input class="ui button fluid" type="submit" value="Cadastrar">
+                <a class="ui button fluid" href="{% url 'blog.views.login_verifica_grupo' %}">Voltar</a>
                 <input class="ui button fluid positive" type="submit" value="Cadastrar">
             </div>
         </form>
     </div>
+    <div class="two wide column"></div>
 {% endblock content %}

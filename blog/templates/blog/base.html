@@ -13,16 +13,17 @@
 <body>
 <header class="ui stackable middle aligned grid">
     <div class="one wide column"></div>
-    <div class="one wide column">
+    <div class="three wide column">
+        <div class="espaco"></div>
         <a class="ui image" href="{% url 'blog.views.login_verifica_grupo' %}">
             <img src="{% static 'images/logo-ifc.png' %}"/>
         </a>
     </div>
-    <div class="ten wide column">
+    <div class="seven wide column">
         <br/>
         <h2 class="ui header">
             <div class="sub header">
-                SISTEMA DE CONTROLE DE PERMANÊNCIA
+                <b>SISTEMA DE CONTROLE DE PERMANÊNCIA</b>
             </div>
         </h2>
         <br/>
@@ -51,7 +52,29 @@
     </div>
 </header>
 
-<section class="ui centered grid stackable container">
+<section class="ui centered grid stackable">
+    <div class="two wide column scp-menu">
+        <div class="ui secondary vertical menu">
+            <div class="item">
+                <a href="{% url 'blog.views.login_verifica_grupo' %}"><i class="large home icon"></i>Home</a>
+            </div>
+            <div class="item">
+                <a href="{% url 'blog.views.cadastra_permissao' %}"><i class="write icon"></i>Criar Permissão</a>
+            </div>
+            <div class="item">
+                <a href="{% url 'blog.views.lista_permissoes' %}"><i class="history icon"></i>Histórico</a>
+            </div>
+            <div class="ui dropdown item">
+                <div class="item">
+                    <a><i class="plus home icon"></i>Cadastros<i class="dropdown icon"></i></a>
+                </div>
+                <div class="menu">
+                    <a class="item" href="{% url 'blog.views.cadastra_aluno' %}">Aluno</a>
+                    <a class="item" href="{% url 'blog.views.cadastra_funcionario' %}">Funcionario</a>
+                </div>
+            </div>
+        </div>
+    </div>
     {% block content %}
     {% endblock %}
 </section>

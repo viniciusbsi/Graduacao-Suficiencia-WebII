@@ -1,8 +1,10 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+    <div class="one wide column"></div>
     <div class="twelve wide column">
-        <h1><i class="plus icon"></i> Cadastro de Aluno</h1>
+        <div class="espaco"></div>
+        <h1><i class="plus icon"></i> Cadastro de Funcionário</h1>
         <form class="ui segment form" method="POST" action="{% url 'blog.views.cadastra_funcionario' %}">
             {% csrf_token %}
             <div class="fields">
@@ -87,4 +89,5 @@
             </div>
         </form>
     </div>
+    <div class="one wide column"></div>
 {% endblock content %}

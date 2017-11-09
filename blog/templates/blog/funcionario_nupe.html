@@ -1,21 +1,18 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-        <div class="four wide column">
-            <div class="ui row espaco">
-                <a href="{% url 'blog.views.cadastra_permissao' %}" class="massive ui green button fluid">Criar Permissão</a>
-            </div>
-            <div class="ui row espaco">
-                <a href="{% url 'blog.views.lista_permissoes' %}" class="massive ui green button fluid">Histórico</a>
-            </div>
-            <div class="ui row espaco">
-                <div class="ui green button massive ui pointing dropdown link item fluid">
-                    <div>Cadastros<i class="angle down icon"></i></div>
-                    <div class="ui menu">
-                        <a class="item" href="{% url 'blog.views.cadastra_aluno' %}">Aluno</a>
-                        <a class="item"  href="{% url 'blog.views.cadastra_funcionario' %}">Funcionario</a>
-                    </div>
+    <div class="two wide column"></div>
+    <div class="ten wide column">
+        <div class="espaco"></div>
+        <div class="ui row">
+            <div class="ui message">
+                <div class="header">
+                    Sistema de Controle de Permancência
                 </div>
+                <p>We just updated our privacy policy here to better service our customers. We recommend reviewing the
+                    changes.</p>
             </div>
         </div>
+    </div>
+    <div class="two wide column"></div>
 {% endblock content %}

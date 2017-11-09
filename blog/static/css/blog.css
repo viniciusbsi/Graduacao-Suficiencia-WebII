@@ -1,5 +1,6 @@
 body {
-    background-color: #DEDEDE;
+    background-color: #e8e8e8 !important;
+    min-height: 100% !important;
 }
 
 header {
@@ -9,20 +10,23 @@ header {
     background-color: #f8f8f8;
 }
 
-nav {
-    min-height: 7% !important;
-}
-
 section {
-    min-height: 74% !important;
+    min-height: 75% !important;
     padding-top: 8%; !important;
 }
 
 footer {
-    min-height: 11% !important;
-    padding-top: 1% !important;
+    min-height: 12% !important;
 }
 
 .espaco{
-    margin-bottom: 15%;
+    margin-bottom: 5%;
+}
+
+.scp-menu{
+    background-color: ghostwhite;
+}
+
+header{
+    background-color: yellowgreen !important;
 }

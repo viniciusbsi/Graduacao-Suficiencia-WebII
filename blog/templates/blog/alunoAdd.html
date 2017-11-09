@@ -1,7 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+    <div class="one wide column"></div>
     <div class="twelve wide column">
+        <div class="espaco"></div>
         <h1><i class="plus icon"></i> Cadastro de Aluno</h1>
         <form class="ui segment form" method="POST" action="{% url 'blog.views.cadastra_aluno' %}">
             {% csrf_token %}
@@ -94,9 +96,10 @@
                 </div>
             </div>
             <div class="ui two buttons">
-                <input class="ui button fluid" type="submit" value="Voltar">
+                <a class="ui button fluid" href="{% url 'blog.views.login_verifica_grupo' %}">Voltar</a>
                 <input class="ui button fluid positive" type="submit" value="Cadastrar">
             </div>
         </form>
     </div>
+    <div class="one wide column"></div>
 {% endblock content %}
