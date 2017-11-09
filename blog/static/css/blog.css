@@ -30,3 +30,9 @@ footer {
 header{
     background-color: yellowgreen !important;
 }
+
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
