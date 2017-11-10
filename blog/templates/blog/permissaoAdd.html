@@ -19,7 +19,9 @@
                 </div>
                 <div class="five wide field">
                     <label>Hora solicitada pelo aluno:</label>
-                    {{ form.hora_solicitada }}
+                    <div class="hora">
+                        {{ form.hora_solicitada }}
+                    </div>
                     {% if form.hora_solicitada.errors %}
                         <div class="ui pointing red basic label">
                             {{ form.hora_solicitada.errors }}

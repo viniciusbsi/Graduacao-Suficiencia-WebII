@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Aluno(models.Model):
-    matricula = models.IntegerField()
+    matricula = models.CharField(max_length=20)
     nome = models.CharField(max_length=200)
     nome_pai = models.CharField(max_length=200, null=True, blank=True)
     nome_mae = models.CharField(max_length=200)
