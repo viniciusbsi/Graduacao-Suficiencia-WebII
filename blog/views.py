@@ -50,7 +50,10 @@ def cadastra_permissao(request):
             permissao.funcionario_nupe = funcionario
             permissao.data = date.today()
             permissao.save()
-            return redirect('blog.views.login_verifica_grupo')
+            msg = "Permissão cadastrada com sucesso!"
+            return render(request, 'blog/funcionario_nupe.html', {'msg': msg})
+        else:
+            print form.errors
     else:
         form = PermissaoForm()
     return render(request, 'blog/permissaoAdd.html', {'form': form})
@@ -90,11 +93,11 @@ def cadastra_funcionario(request):
             user.groups.add(grupo)
             user.set_password(request.POST['password'])
             user.save()
-
             obj = form.save(commit=False)
             obj.pessoa_funcionario = User.objects.last()
             obj.save()
-            return redirect('blog.views.login_verifica_grupo')
+            msg = "Funcionário cadastrado com sucesso!"
+            return render(request, 'blog/funcionario_nupe.html', {'msg': msg})
         else:
             print(form_pessoa.errors)
             print(form_pessoa.errors)

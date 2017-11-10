@@ -5,6 +5,15 @@
     <div class="ten wide column">
         <div class="espaco"></div>
         <div class="ui row">
+            {% if msg %}
+                <div class="sixteen wide column">
+                    <div class="ui green message">
+                        <div class="header">
+                            {{ msg }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
             <div class="ui message">
                 <div class="header">
                     Sistema de Controle de Permancência

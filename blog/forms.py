@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from django import forms
 from .models import *
 from django.contrib.auth.models import User
@@ -23,15 +25,7 @@ class CursoForm(forms.ModelForm):
         model = Curso
         fields = '__all__'
 
-# class FuncaoForm(forms.ModelForm):
-#
-#     class Meta:
-#         model = Funcao
-#         fields = '__all__'
-
 class AlunoForm(forms.ModelForm):
-
-    matricula = forms.IntegerField(required=True)
 
     class Meta:
         model = Aluno
@@ -40,9 +34,6 @@ class AlunoForm(forms.ModelForm):
 
 
 class FuncionarioForm(forms.ModelForm):
-
-    matricula = forms.IntegerField(required=False)
-
     class Meta:
         model = Funcionario
         fields = '__all__'
@@ -52,11 +43,22 @@ class FuncionarioForm(forms.ModelForm):
 class PessoaForm(forms.ModelForm):
 
     # groups = forms.ModelChoiceField(queryset=Group.objects.all().exclude(name='Aluno'), required=True)
-
     class Meta:
         model = User
         fields = '__all__'
         exclude = ['last_login', 'is_superuser', 'user_permissions', 'is_active', 'date_joined', 'is_staff', 'password']
+
+    def clean_first_name(self):
+        if 'first_name' not in self.cleaned_data["first_name"]:
+            raise forms.ValidationError(u"Este campo é obrigatório")
+
+    def clean_last_name(self):
+        if 'first_name' not in self.cleaned_data["last_name"]:
+            raise forms.ValidationError(u"Este campo é obrigatório")
+
+    def clean_email(self):
+        if 'first_name' not in self.cleaned_data["email"]:
+            raise forms.ValidationError(u"Este campo é obrigatório")
 
 class AlunoPessoaForm(forms.ModelForm):
 

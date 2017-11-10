@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     // # MASK #
     $('.hora input').mask('00:00', {placeholder:'HH:MM'});
-    $('.matricula input').mask('00000000000000000000');
+    $('.telefone input').mask('(00) 00000-0000', {placeholder:'(XX) XXXXX-XXXX'});
 
     $('.message .close')
         .on('click', function () {

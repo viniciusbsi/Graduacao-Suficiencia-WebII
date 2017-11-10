@@ -1,8 +1,10 @@
+# coding: utf-8
+
 from django.db import models
 
 
 class Aluno(models.Model):
-    matricula = models.CharField(max_length=20)
+    matricula = models.PositiveIntegerField(max_length=20)
     nome = models.CharField(max_length=200)
     nome_pai = models.CharField(max_length=200, null=True, blank=True)
     nome_mae = models.CharField(max_length=200)
@@ -25,8 +27,8 @@ class Permissao(models.Model):
     hora_solicitada = models.TimeField()
     funcionario_nupe = models.ForeignKey('blog.Funcionario', related_name='Permissao_FuncionarioNupe')
     aluno = models.ForeignKey('blog.Aluno', related_name='Permissao_Aluno')
-    verificado_professor = models.ForeignKey('blog.Funcionario', related_name='Permissao_Valida_Professor')
-    verificado_portaria = models.ForeignKey('blog.Funcionario', related_name='Permissao_Valida_Portaria')
+    verificado_professor = models.ForeignKey('blog.Funcionario', related_name='Permissao_Valida_Professor', blank=True, null=True)
+    verificado_portaria = models.ForeignKey('blog.Funcionario', related_name='Permissao_Valida_Portaria', blank=True, null=True)
 
     def __unicode__(self):
         return self.aluno
@@ -37,7 +39,7 @@ class Permissao(models.Model):
 
 class Funcionario(models.Model):
     pessoa_funcionario = models.ForeignKey('auth.User')
-    matricula = models.IntegerField(blank=False)
+    matricula = models.PositiveIntegerField(blank=False)
     # funcao = models.ForeignKey('blog.Funcao', related_name='Funcionario_Funcao')
 
     def __unicode__(self):

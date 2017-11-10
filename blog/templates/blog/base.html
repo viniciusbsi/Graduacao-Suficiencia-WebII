@@ -7,7 +7,7 @@
     <script type="application/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script type="application/javascript" src="{% static 'semanticui/semantic.min.js' %}"></script>
     <script type="application/javascript" src="{% static 'js/scp.js' %}"></script>
-    <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+    <script src="{% static 'js/jquery.mask.js' %}"></script>
 
 </head>
 
@@ -57,7 +57,7 @@
     <div class="two wide column scp-menu">
         <div class="ui secondary vertical menu">
             <div class="item">
-                <a href="{% url 'blog.views.login_verifica_grupo' %}"><i class="large home icon"></i>Home</a>
+                <a href="{% url 'blog.views.login_verifica_grupo' %}"><i class="home icon"></i>Home</a>
             </div>
             <div class="item">
                 <a href="{% url 'blog.views.cadastra_permissao' %}"><i class="write icon"></i>Criar Permissão</a>
