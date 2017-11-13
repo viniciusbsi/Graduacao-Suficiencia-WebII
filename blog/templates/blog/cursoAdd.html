@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="two wide column"></div>
+    <div class="ten wide column">
+        <div class="espaco"></div>
+        <h1><i class="list icon"></i> Cadastrar Curso</h1>
+        <form class="ui form segment" method="POST" action="{% url 'blog.views.cadastra_curso' %}">
+            {% csrf_token %}
+            <div class="fields">
+                <div class="five wide field"></div>
+                <div class="six wide field">
+                    <label>Descrição:</label>
+                    {{ form.descricao }}
+                    {% if form.descricao.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.descricao.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="five wide field"></div>
+            </div>
+            <div class="ui two buttons">
+                <a class="ui button fluid" href="{% url 'blog.views.login_verifica_grupo' %}">Voltar</a>
+                <input class="ui button fluid positive" type="submit" value="Cadastrar">
+            </div>
+        </form>
+    </div>
+    <div class="two wide column"></div>
+{% endblock content %}

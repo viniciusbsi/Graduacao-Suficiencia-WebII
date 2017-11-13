@@ -24,8 +24,29 @@
                     <td>{{ permissao.descricao }}</td>
                     <td>{{ permissao.funcionario_nupe }}</td>
                     <td>{{ permissao.hora_solicitada }}</td>
-                    <td>{{ permissao.verificado_professor }}</td>
-                    <td>{{ permissao.verificado_portaria }}</td>
+                    <td>
+                        {% if permissao.verificado_professor == None %}
+                            <i class="remove circle outline icon red large"></i>
+                            {% if grupo_user == 'professor' %}
+                                (<a href="{% url 'blog.views.ValidaPermissaoProfessor' permissao.id %}" class="link">Validar</a>)
+                            {% endif %}
+                        {% else %}
+                            <i class="check circle outline icon green large"></i>
+                            {{ permissao.verificado_professor }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if permissao.verificado_portaria == None %}
+                            <i class="remove circle outline icon red large"></i>
+                            {% if grupo_user == 'portaria' %}
+                                (<a href="{% url 'blog.views.ValidaPermissaoPortaria' permissao.id %}" class="link">Validar</a>)
+                            {% endif %}
+
+                        {% else %}
+                            <i class="check circle outline icon green large"></i>
+                            {{ permissao.verificado_portaria }}
+                        {% endif %}
+                    </td>
                     <td>
                         <a target="_blank" href="{% url 'blog.views.GeraComprovantePDF' permissao.id %}" class="link">Gerar
                             PDF</a>

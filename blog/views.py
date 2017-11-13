@@ -22,15 +22,15 @@ from reportlab.lib.units import inch
 def login_verifica_grupo(request):
     if request.user.groups.all():
         if request.user.groups.get().name == "Nupe":
-            return render(request, 'blog/funcionario_nupe.html')
+            return render(request, 'blog/funcionario_nupe.html', {'grupo_user': 'nupe'})
 
         if request.user.groups.get().name == "Portaria":
             permissoes = Permissao.objects.all().order_by('data')
-            return render(request, 'blog/permissaoListaPortaria.html', {'permissoes': permissoes})
+            return render(request, 'blog/permissaoLista.html', {'permissoes': permissoes, 'grupo_user': 'portaria'})
 
         if request.user.groups.get().name == "Professor":
             permissoes = Permissao.objects.all().order_by('data')
-            return render(request, 'blog/permissaoListaProfessor.html', {'permissoes': permissoes})
+            return render(request, 'blog/permissaoLista.html', {'permissoes': permissoes, 'grupo_user': 'professor'})
 
     return render(request, 'registration/login.html')
 
@@ -59,6 +59,36 @@ def cadastra_permissao(request):
     return render(request, 'blog/permissaoAdd.html', {'form': form})
 
 
+@login_required
+def cadastra_curso(request):
+    if request.method == "POST":
+        form = CursoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            msg = "Curso cadastrado com sucesso!"
+            return render(request, 'blog/funcionario_nupe.html', {'msg': msg})
+        else:
+            print form.errors
+    else:
+        form = CursoForm()
+    return render(request, 'blog/cursoAdd.html', {'form': form})
+
+
+@login_required
+def cadastra_turma(request):
+    if request.method == "POST":
+        form = TurmaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            msg = "Turma cadastrada com sucesso!"
+            return render(request, 'blog/funcionario_nupe.html', {'msg': msg})
+        else:
+            print form.errors
+    else:
+        form = TurmaForm()
+    return render(request, 'blog/turmaAdd.html', {'form': form})
+
+
 def lista_permissoes(request):
     permissoes = Permissao.objects.all().order_by('data')
     return render(request, 'blog/permissaoLista.html', {'permissoes': permissoes})
@@ -70,13 +100,13 @@ def cadastra_aluno(request):
         form = AlunoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('blog.views.login_verifica_grupo')
+            msg = "Aluno cadastrado com sucesso!"
+            return render(request, 'blog/funcionario_nupe.html', {'msg': msg})
 
         else:
             print (form.errors)
     else:
         form = AlunoForm()
-        form_pessoa = PessoaForm()
     return render(request, 'blog/alunoAdd.html', {'form': form})
 
 
@@ -86,12 +116,12 @@ def cadastra_funcionario(request):
         form = FuncionarioForm(request.POST)
         form_pessoa = PessoaForm(request.POST)
         form_senha = PessoaPasswordForm(request.POST)
-        if form.is_valid() and form_pessoa.is_valid():
+        if form.is_valid() and form_pessoa.is_valid() and form_senha.is_valid():
             form_pessoa.save()
             user = User.objects.last()
+            user.set_password(request.POST['password'])
             grupo = Group.objects.get(pk=request.POST['groups'])
             user.groups.add(grupo)
-            user.set_password(request.POST['password'])
             user.save()
             obj = form.save(commit=False)
             obj.pessoa_funcionario = User.objects.last()
@@ -138,7 +168,7 @@ def ValidaPermissaoProfessor(request, id=None):
     permissao.verificado_professor = Funcionario.objects.get(pessoa_funcionario=request.user.id)
     permissao.save()
     permissoes = Permissao.objects.all()
-    return render(request, 'blog/permissaoListaProfessor.html', {'permissoes': permissoes})
+    return render(request, 'blog/permissaoLista.html', {'permissoes': permissoes, 'grupo_user': 'professor'})
 
 
 @login_required
@@ -146,7 +176,8 @@ def ValidaPermissaoPortaria(request, id=None):
     permissao = Permissao.objects.get(pk=id)
     permissao.verificado_portaria = Funcionario.objects.get(pessoa_funcionario=request.user.id)
     permissao.save()
-    return render(request, 'blog/permissaoListaPortaria.html')
+    permissoes = Permissao.objects.all()
+    return render(request, 'blog/permissaoLista.html', {'permissoes': permissoes, 'grupo_user': 'portaria'})
 
 # @login_required
 # def post_edit(request, pk):

@@ -1,7 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="thirteen wide column">
+    <div class="two wide column"></div>
+    <div class="ten wide column">
+        <div class="espaco"></div>
             <h1><i class="list icon"></i> Permissões</h1>
             <table class="ui celled table">
                 <thead>
@@ -25,7 +27,7 @@
                             {% if permissao.verificado_professor != 'None' %}
                                 Validado por <b>{{ permissao.verificado_professor }}</b>
                             {% else %}
-                                <a href="{% url 'blog.views.ValidaPermissaoProfessor' permissao.id %}" class="link">Validar</a>
+                                <a href="{% url 'blog.views.ValidaPermissaoPortaria' permissao.id %}" class="link">Validar</a>
                             {% endif %}
                         </td>
                     </tr>
@@ -33,5 +35,7 @@
                 </tbody>
                 <tfoot>
             </table>
+        </div>
     </div>
+    <div class="two wide column"></div>
 {% endblock content %}

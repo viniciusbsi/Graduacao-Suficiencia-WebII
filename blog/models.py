@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Aluno(models.Model):
-    matricula = models.PositiveIntegerField(max_length=20)
+    matricula = models.PositiveIntegerField()
     nome = models.CharField(max_length=200)
     nome_pai = models.CharField(max_length=200, null=True, blank=True)
     nome_mae = models.CharField(max_length=200)
@@ -71,6 +71,7 @@ class Curso(models.Model):
 
 class Turma(models.Model):
     descricao = models.CharField(max_length=200)
+    ano = models.CharField(max_length=5)
 
     def __unicode__(self):
         return self.descricao

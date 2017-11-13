@@ -48,17 +48,12 @@ class PessoaForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['last_login', 'is_superuser', 'user_permissions', 'is_active', 'date_joined', 'is_staff', 'password']
 
-    def clean_first_name(self):
-        if 'first_name' not in self.cleaned_data["first_name"]:
-            raise forms.ValidationError(u"Este campo é obrigatório")
+    def __init__(self, *args, **kwargs):
+        super(PessoaForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = True
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
 
-    def clean_last_name(self):
-        if 'first_name' not in self.cleaned_data["last_name"]:
-            raise forms.ValidationError(u"Este campo é obrigatório")
-
-    def clean_email(self):
-        if 'first_name' not in self.cleaned_data["email"]:
-            raise forms.ValidationError(u"Este campo é obrigatório")
 
 class AlunoPessoaForm(forms.ModelForm):
 
@@ -72,8 +67,8 @@ class AlunoPessoaForm(forms.ModelForm):
 
 
 class PessoaPasswordForm(forms.ModelForm):
-    password = forms.CharField(required=False, widget=forms.PasswordInput())
-    password_checker = forms.CharField(required=False, widget=forms.PasswordInput())
+    password = forms.CharField(required=True, widget=forms.PasswordInput())
+    password_checker = forms.CharField(required=True, widget=forms.PasswordInput())
 
     class Meta:
         model = User
@@ -85,8 +80,8 @@ class PessoaPasswordForm(forms.ModelForm):
     def clean_password_checker(self):
         return ValidarPassword(self.cleaned_data.get('password'), self.cleaned_data.get('password_checker'))
 
-    def save(self, commit=True):
-        user = super(PessoaPasswordForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password"])
-        if commit:
-            user.save()
+    # def save(self, commit=True):
+    #     user = super(PessoaPasswordForm, self).save(commit=False)
+    #     user.set_password(self.cleaned_data["password"])
+    #     if commit:
+    #         user.save()
