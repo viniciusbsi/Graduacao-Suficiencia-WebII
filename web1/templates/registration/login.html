@@ -1,12 +1,13 @@
 {% extends "web1/base.html" %}
 
 {% block content %}
-    <div class="ui eight wide column">
-        {% if form.errors %}
-            <p>Login ou senha incorretos. Tente de novo.</p>
-        {% endif %}
-        <form class="ui form" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+    <div class="ui six wide column ">
+        <h1 class="ui centered header">Login</h1>
+        <form class="ui form segment" method="post" action="{% url 'django.contrib.auth.views.login' %}">
             {% csrf_token %}
+            {% if form.errors %}
+                <p class="ui message red">Login ou senha incorretos. Tente de novo.</p>
+            {% endif %}
             <div class="ui field">
                 <label>{{ form.username.label_tag }}</label>
                 {{ form.username }}
