@@ -15,6 +15,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '+=l74%)==10x_8(4-j4u1iul=wy=8ngmkx^9aw!h(g&gwgxsn3'
 
@@ -102,6 +103,7 @@ LOGIN_REDIRECT_URL = '/'
 PROJECT_APP_PATH = os.path.dirname(os.path.abspath(__file__))
 PROJECT_APP = os.path.basename(PROJECT_APP_PATH)
 PROJECT_ROOT = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
+
 
 f = os.path.join(PROJECT_APP_PATH, "local_settings.py")
 if os.path.exists(f):
