@@ -1,0 +1,38 @@
+{% extends 'web1/base.html' %}
+
+{% block content %}
+    <div class="two wide column"></div>
+    <div class="ten wide column">
+        <div class="espaco"></div>
+        <div class="ui row">
+            {% if msg %}
+                <div class="sixteen wide column">
+                    <div class="ui green message">
+                        <div class="header">
+                            {{ msg }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="ui message">
+                <div class="header">
+                    Sistema de Controle de Permancência
+                </div>
+                <p>Este sistema foi criado com âmbito de avaliação para a disciplina de Desenvolvimento Web 1 do curso
+                    de Bacharelado em Sistemas de Informação
+                    do Instituto Federal Catarinense Campus Araquari. </p>
+                <p>
+                    Esta aplicação tem por objetivo realizar o controle de:
+                <ol>
+                    <li>Cadastro de funcionários do Núcleo Pedagógico</li>
+                    <li>Cadastro de alunos</li>
+                    <li>Cadastro de cursos</li>
+                    <li>Cadastro de turmas</li>
+                    <li>Criação de permissões</li>
+                </ol>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="two wide column"></div>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends 'web1/base.html' %}
+
+{% block content %}
+    <div class="two wide column"></div>
+    <div class="ten wide column">
+        <div class="espaco"></div>
+        <h1><i class="list icon"></i> Lista de Cursos</h1>
+        <table class="ui celled table green">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descrição</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for obj in object_list %}
+                <tr>
+                    <td>{{ obj.id }}</td>
+                    <td>{{ obj.descricao }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+        </table>
+    </div>
+    <div class="two wide column"></div>
+{% endblock content %}

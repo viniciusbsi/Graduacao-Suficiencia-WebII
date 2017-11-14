@@ -1,0 +1,61 @@
+{% extends 'web1/base.html' %}
+
+{% block content %}
+    <div class="two wide column"></div>
+    <div class="ten wide column">
+        <div class="espaco"></div>
+        <h1><i class="list icon"></i> Lista de Permissões</h1>
+        <table class="ui celled table green">
+            <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>Descrição</th>
+                <th>Funcionario Nupe</th>
+                <th>Hora</th>
+                <th>Professor</th>
+                <th>Portaria</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for permissao in permissoes %}
+                <tr>
+                    <td>{{ permissao.aluno }}</td>
+                    <td>{{ permissao.descricao|truncatechars:50 }}</td>
+                    <td>{{ permissao.funcionario_nupe }}</td>
+                    <td>{{ permissao.hora_solicitada }}</td>
+                    <td>
+                        {% if permissao.verificado_professor == None %}
+                            <i class="remove circle outline icon red large"></i>
+                            {% if grupo_user == 'professor' %}
+                                (<a href="{% url 'web1.views.ValidaPermissaoProfessor' permissao.id %}" class="link">Validar</a>)
+                            {% endif %}
+                        {% else %}
+                            <i class="check circle outline icon green large"></i>
+                            {{ permissao.verificado_professor }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if permissao.verificado_portaria == None %}
+                            <i class="remove circle outline icon red large"></i>
+                            {% if grupo_user == 'portaria' %}
+                                (<a href="{% url 'web1.views.ValidaPermissaoPortaria' permissao.id %}" class="link">Validar</a>)
+                            {% endif %}
+
+                        {% else %}
+                            <i class="check circle outline icon green large"></i>
+                            {{ permissao.verificado_portaria }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a target="_blank" href="{% url 'web1.views.GeraComprovantePDF' permissao.id %}" class="link">Gerar
+                            PDF</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+        </table>
+    </div>
+    <div class="two wide column"></div>
+{% endblock content %}

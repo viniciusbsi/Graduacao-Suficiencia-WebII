@@ -1,0 +1,59 @@
+{% extends 'web1/base.html' %}
+
+{% block content %}
+    <div class="two wide column"></div>
+    <div class="ten wide column">
+        <div class="espaco"></div>
+        <h1><i class="list icon"></i> Criar Permissão</h1>
+        <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_permissao' %}">
+            {% csrf_token %}
+            <div class="fields">
+                <div class="ten wide field">
+                    <label>Descrição:</label>
+                    {{ form.descricao }}
+                    {% if form.descricao.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.descricao.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="six wide field">
+                    <label>Hora solicitada pelo aluno:</label>
+                    <div class="hora">
+                        {{ form.hora_solicitada }}
+                    </div>
+                    {% if form.hora_solicitada.errors %}
+                        <div class="ui pointing red basic label">
+                            {{ form.hora_solicitada.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="fields">
+                <div class="eight wide field">
+                    <label>Aluno:</label>
+                    {{ form.aluno }}
+                    {% if form.aluno.errors %}
+                        <div class="ui pointing red basic label scp-label">
+                            {{ form.aluno.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="eight wide field">
+                    <label>Tipo de Permissão:</label>
+                    {{ form.tipo_permissao }}
+                    {% if form.tipo_permissao.errors %}
+                        <div class="ui pointing red basic label scp-label">
+                            {{ form.tipo_permissao.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="ui two buttons">
+                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
+                <input class="ui button fluid positive" type="submit" value="Cadastrar">
+            </div>
+        </form>
+    </div>
+    <div class="two wide column"></div>
+{% endblock content %}

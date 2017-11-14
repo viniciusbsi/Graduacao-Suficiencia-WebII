@@ -1,12 +1,11 @@
-# django_girls
+# WEB1
 
-Tutorial Django Girls feito para aprendizado acadêmico.
+Projeto de suficiência da disciplina de Desenvolvimento Web 1.
 
 Instituto Federal Catarinense Câmpus Araquari
 
 Curso de Bacharelado em Sistemas de Informação
 
-* **Autor:** Wagner Esser
-* **Tutorial:** [Django Girls](https://tutorial.djangogirls.org/pt/).
+* **Autor:** Vinícius de Oliveira
 * **Linguagem:** Python
 * **Framework:** Django
