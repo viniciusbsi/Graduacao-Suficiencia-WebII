@@ -6,8 +6,10 @@ from django.views.generic import ListView
 from web1.forms import *
 from django.shortcuts import redirect
 from django.contrib.auth.models import Group, User
+from django.db.models import Q
 
-# Pra gerar PDF e Zip#
+
+# Pra gerar PDF#
 from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
@@ -99,7 +101,12 @@ def cadastra_turma(request):
 
 
 def lista_permissoes(request):
-    permissoes = Permissao.objects.all().order_by('data')
+    if 'filtro' in request.GET:
+        permissoes = Permissao.objects.filter(Q(aluno__nome__icontains=request.GET.get('filtro'))|
+            Q(aluno__curso__descricao__icontains=request.GET.get('filtro'))|
+            Q(aluno__turma__descricao__icontains=request.GET.get('filtro')))
+    else:
+        permissoes = Permissao.objects.all().order_by('data')
     return render(request, 'web1/permissaoLista.html', {'permissoes': permissoes, 'grupo_user': 'nupe'})
 
 

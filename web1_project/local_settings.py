@@ -2,7 +2,7 @@
 # modify all the variables in settings.py.
 
 # DEBUG = False
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['viniciusbsi.pythonanywhere.com']

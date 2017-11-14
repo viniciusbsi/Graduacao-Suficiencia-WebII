@@ -39,72 +39,72 @@
 <article class="ui centered grid stackable">
 
     {% if user.is_authenticated and request.user|has_group:"Nupe" %}
-        <div class="two wide column scp-menu">
-            <div class="ui secondary vertical menu">
-                <div class="item">
+        <section class="two wide column scp-menu">
+            <section class="ui secondary vertical menu">
+                <section class="item">
                     <a href="{% url 'web1.views.login_verifica_grupo' %}"><i class="home icon"></i>Home</a>
-                </div>
-                <div class="item">
+                </section>
+                <section class="item">
                     <a href="{% url 'web1.views.cadastra_permissao' %}"><i class="write icon"></i>Criar Permissão</a>
-                </div>
-                <div class="item">
+                </section>
+                <section class="item">
                     <a href="{% url 'web1.views.lista_permissoes' %}"><i class="history icon"></i>Histórico</a>
-                </div>
-                <div class="ui dropdown item scp-item">
-                    <div class="item scp-item">
+                </section>
+                <section class="ui dropdown item scp-item">
+                    <section class="item scp-item">
                         <a><i class="plus home icon"></i>Cadastros<i class="dropdown icon"></i></a>
-                    </div>
-                    <div class="menu">
+                    </section>
+                    <section class="menu">
                         <a class="item" href="{% url 'web1.views.cadastra_aluno' %}">Aluno</a>
                         <a class="item" href="{% url 'web1.views.cadastra_funcionario' %}">Funcionario</a>
                         <a class="item" href="{% url 'web1.views.cadastra_curso' %}">Curso</a>
                         <a class="item" href="{% url 'web1.views.cadastra_turma' %}">Turma</a>
-                    </div>
-                </div>
-                <div class="ui dropdown item scp-item">
-                    <div class="item scp-item">
+                    </section>
+                </section>
+                <section class="ui dropdown item scp-item">
+                    <section class="item scp-item">
                         <a><i class="list home icon"></i>Registros<i class="dropdown icon"></i></a>
-                    </div>
-                    <div class="menu">
+                    </section>
+                    <section class="menu">
                         <a class="item" href="{% url 'aluno_list' %}">Alunos</a>
                         <a class="item" href="{% url 'funcionario_list' %}">Funcionarios</a>
                         <a class="item" href="{% url 'curso_list' %}">Cursos</a>
                         <a class="item" href="{% url 'turma_list' %}">Turmas</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </section>
+                </section>
+            </section>
+        </section>
     {% endif %}
     {% block content %}
     {% endblock %}
 </article>
 <footer class="ui black inverted vertical footer relaxed segment">
-    <div class="ui five column middle aligned centered inverted divided stackable grid">
-        <div class="two wide column">
+    <section class="ui five column middle aligned centered inverted divided stackable grid">
+        <section class="two wide column">
             <h5 class="ui inverted icon header">
                 <i class="anchor icon"></i>
-                <div class="content">
+                <section class="content">
                     SCP
-                    <div class="sub header">© Copyright 2017.</div>
-                </div>
+                    <section class="sub header">© Copyright 2017.</section>
+                </section>
             </h5>
-        </div>
-        <div class="three wide column">
+        </section>
+        <section class="three wide column">
             <ul class="ui divided celled relaxed inverted list">
                 <li class="item"><a href="https://github.com/viniciusbsi" target="_blank"><i
                         class="ui github large icon"></i>Github @viniciusbsi</a></li>
                 <li class="item"><a href="https://www.linkedin.com/in/vinicius-o-44267511a/" target="_blank"><i
                         class="ui linkedin large icon"></i>Linkedin</a></li>
             </ul>
-        </div>
-    </div>
+        </section>
+    </section>
 </footer>
 {#<footer class="ui inverted vertical segment footer">#}
-{#    <div class="ui centered grid">#}
-{#        <div class="sixteen wide column center aligned">#}
+{#    <section class="ui centered grid">#}
+{#        <section class="sixteen wide column center aligned">#}
 {#            Sistema de Controle de Permanência #}
-{#        </div>#}
-{#    </div>#}
+{#        </section>#}
+{#    </section>#}
 {#</footer>#}
 
 </body>

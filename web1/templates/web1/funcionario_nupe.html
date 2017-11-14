@@ -1,23 +1,23 @@
 {% extends 'web1/base.html' %}
 
 {% block content %}
-    <div class="two wide column"></div>
-    <div class="ten wide column">
-        <div class="espaco"></div>
-        <div class="ui row">
+    <section class="two wide column"></section>
+    <section class="ten wide column">
+        <section class="espaco"></section>
+        <section class="ui row">
             {% if msg %}
-                <div class="sixteen wide column">
-                    <div class="ui green message">
-                        <div class="header">
+                <section class="sixteen wide column">
+                    <section class="ui green message">
+                        <section class="header">
                             {{ msg }}
-                        </div>
-                    </div>
-                </div>
+                        </section>
+                    </section>
+                </section>
             {% endif %}
-            <div class="ui message">
-                <div class="header">
+            <section class="ui message">
+                <section class="header">
                     Sistema de Controle de Permancência
-                </div>
+                </section>
                 <p>Este sistema foi criado com âmbito de avaliação para a disciplina de Desenvolvimento Web 1 do curso
                     de Bacharelado em Sistemas de Informação
                     do Instituto Federal Catarinense Campus Araquari. </p>
@@ -31,8 +31,8 @@
                     <li>Criação de permissões</li>
                 </ol>
                 </p>
-            </div>
-        </div>
-    </div>
-    <div class="two wide column"></div>
+            </section>
+        </section>
+    </section>
+    <section class="two wide column"></section>
 {% endblock content %}

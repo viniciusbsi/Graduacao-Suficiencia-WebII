@@ -1,30 +1,30 @@
 {% extends 'web1/base.html' %}
 
 {% block content %}
-    <div class="two wide column"></div>
-    <div class="ten wide column">
-        <div class="espaco"></div>
+    <section class="two wide column"></section>
+    <section class="ten wide column">
+        <section class="espaco"></section>
         <h1><i class="list icon"></i> Cadastrar Curso</h1>
         <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_curso' %}">
             {% csrf_token %}
-            <div class="fields">
-                <div class="five wide field"></div>
-                <div class="six wide field">
+            <section class="fields">
+                <section class="five wide field"></section>
+                <section class="six wide field">
                     <label>Descrição:</label>
                     {{ form.descricao }}
                     {% if form.descricao.errors %}
-                        <div class="ui pointing red basic label">
+                        <section class="ui pointing red basic label">
                             {{ form.descricao.errors }}
-                        </div>
+                        </section>
                     {% endif %}
-                </div>
-                <div class="five wide field"></div>
-            </div>
-            <div class="ui two buttons">
+                </section>
+                <section class="five wide field"></section>
+            </section>
+            <section class="ui two buttons">
                 <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
                 <input class="ui button fluid positive" type="submit" value="Cadastrar">
-            </div>
+            </section>
         </form>
-    </div>
-    <div class="two wide column"></div>
+    </section>
+    <section class="two wide column"></section>
 {% endblock content %}

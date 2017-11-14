@@ -9,7 +9,5 @@ def has_group(user, group_name):
     """
     Verifica se este usuário pertence a um grupo
     """
-    print (user)
-    print (user)
     groups = user.groups.all().values_list('name', flat=True)
     return True if group_name in groups else False
