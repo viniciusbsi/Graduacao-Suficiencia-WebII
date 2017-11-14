@@ -4,8 +4,8 @@
 DEBUG = False
 # DEBUG = True
 
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['viniciusbsi.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['viniciusbsi.pythonanywhere.com']
 
 # Make these unique, and don't share it with anybody.
 SECRET_KEY = "o(*1ltt&=t_+%yvyk!#mk1f)rfx7z!z(9(@!4rtv7+#wvhadd@"
