@@ -342,6 +342,8 @@ def exclui_aluno(request, id):
 def exclui_funcionario(request, id):
     obj = Funcionario.objects.get(pk=id)
     obj.excluido = True
+    obj.pessoa_funcionario.is_active = False
+    obj.pessoa_funcionario.save()
     obj.save()
     msg = "Funcionário removido com sucesso!"
     return render(request, 'web1/funcionario_nupe.html', {'msg': msg})
@@ -349,7 +351,7 @@ def exclui_funcionario(request, id):
 @login_required
 def exclui_permissao(request, id):
     obj = Permissao.objects.get(pk=id)
-    obj.excluido     = True
+    obj.excluido = True
     obj.save()
     msg = "Permissao removida com sucesso!"
     return render(request, 'web1/funcionario_nupe.html', {'msg': msg})
