@@ -12,6 +12,7 @@
                 <th>Função</th>
                 <th>e-mail</th>
                 <th>Matrícula</th>
+                <th>Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -21,6 +22,9 @@
                     <td>{{ obj.pessoa_funcionario.groups.all.0.name }}</td>
                     <td>{{ obj.pessoa_funcionario.email }}</td>
                     <td>{{ obj.matricula }}</td>
+                    <td><a href="{% url 'web1.views.edita_funcionario' obj.id %}" class="link">Editar</a>
+                        </br>
+                        <a href="{% url 'web1.views.exclui_funcionario' obj.id%}" class="link">Excluir</a></td>
                 </tr>
             {% endfor %}
             </tbody>

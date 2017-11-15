@@ -5,7 +5,11 @@
     <section class="twelve wide column">
         <section class="espaco"></section>
         <h1><i class="plus icon"></i> Cadastro de Funcionário</h1>
-        <form class="ui segment form" method="POST" action="{% url 'web1.views.cadastra_funcionario' %}">
+        {% if funcionario %}
+            <form class="ui segment form" method="POST" action="{% url 'web1.views.edita_funcionario' funcionario.id%}">
+        {% else %}
+            <form class="ui segment form" method="POST" action="{% url 'web1.views.cadastra_funcionario' %}">
+        {% endif %}
             {% csrf_token %}
             <section class="fields">
                 <section class="four wide field">

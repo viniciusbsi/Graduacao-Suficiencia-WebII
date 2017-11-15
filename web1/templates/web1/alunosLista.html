@@ -12,6 +12,7 @@
                 <th>Curso</th>
                 <th>Turma</th>
                 <th>Tel. Responsável</th>
+                <th>Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -21,6 +22,9 @@
                     <td>{{ obj.curso }}</td>
                     <td>{{ obj.turma }}</td>
                     <td>{{ obj.telefone_responsavel }}</td>
+                    <td><a href="{% url 'web1.views.edita_aluno' obj.id %}" class="link">Editar</a>
+                        </br>
+                        <a href="{% url 'web1.views.exclui_aluno' obj.id%}" class="link">Excluir</a></td>
                 </tr>
             {% endfor %}
             </tbody>

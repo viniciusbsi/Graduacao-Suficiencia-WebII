@@ -1,8 +1,8 @@
 {% extends 'web1/base.html' %}
 
 {% block content %}
-    <section class="two wide column"></section>
-    <section class="ten wide column">
+    <section class="one wide column"></section>
+    <section class="twelve wide column">
         <section class="espaco"></section>
         <h1><i class="list icon"></i> Lista de Permissões</h1>
         <form class="ui form" id="CampoFiltroForm" method="get" action="{% url 'lista_permissao' %}">
@@ -28,7 +28,7 @@
             <tbody>
             {% for permissao in permissoes %}
                 <tr>
-                    <td>{{ permissao.aluno }}</td>
+                    <td>{{ permissao.aluno }}{{ permissao.excluido }}</td>
                     <td>{{ permissao.descricao|truncatechars:50 }}</td>
                     <td>{{ permissao.funcionario_nupe }}</td>
                     <td>{{ permissao.hora_solicitada }}</td>
@@ -58,8 +58,11 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a target="_blank" href="{% url 'web1.views.GeraComprovantePDF' permissao.id %}" class="link">Gerar
-                            PDF</a>
+                        <a target="_blank" href="{% url 'web1.views.GeraComprovantePDF' permissao.id %}" class="link">Gerar PDF</a>
+                        </br>
+                        <a href="{% url 'web1.views.edita_permissao' permissao.id %}" class="link">Editar</a>
+                        </br>
+                        <a href="{% url 'web1.views.exclui_permissao' permissao.id%}" class="link">Excluir</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -67,5 +70,5 @@
             <tfoot>
         </table>
     </section>
-    <section class="two wide column"></section>
+    <section class="one wide column"></section>
 {% endblock content %}

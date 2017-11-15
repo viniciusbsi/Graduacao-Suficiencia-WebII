@@ -10,6 +10,7 @@
             <tr>
                 <th>Descrição</th>
                 <th>Ano</th>
+                <th>Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -17,6 +18,9 @@
                 <tr>
                     <td>{{ obj.descricao }}</td>
                     <td>{{ obj.ano }}</td>
+                    <td><a href="{% url 'web1.views.edita_turma' obj.id %}" class="link">Editar</a>
+                        </br>
+                        <a href="{% url 'web1.views.exclui_turma' obj.id%}" class="link">Excluir</a></td>
                 </tr>
             {% endfor %}
             </tbody>

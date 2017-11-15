@@ -5,7 +5,12 @@
     <section class="ten wide column">
         <section class="espaco"></section>
         <h1><i class="list icon"></i> Criar Permissão</h1>
-        <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_permissao' %}">
+        {% if permissao %}
+            <form class="ui form segment" method="POST" action="{% url 'web1.views.edita_permissao' permissao.id %}">
+        {% else %}
+            <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_permissao' %}">
+        {% endif %}
+
             {% csrf_token %}
             <section class="fields">
                 <section class="ten wide field">

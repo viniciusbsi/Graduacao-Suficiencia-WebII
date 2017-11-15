@@ -13,6 +13,7 @@ class Aluno(models.Model):
     telefone_responsavel = models.CharField(max_length=16)
     curso = models.ForeignKey('web1.Curso', related_name='Aluno_Curso')
     turma = models.ForeignKey('web1.Turma', related_name='Aluno_turma')
+    excluido = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.nome
@@ -30,6 +31,8 @@ class Permissao(models.Model):
     verificado_professor = models.ForeignKey('web1.Funcionario', related_name='Permissao_Valida_Professor', blank=True, null=True)
     verificado_portaria = models.ForeignKey('web1.Funcionario', related_name='Permissao_Valida_Portaria', blank=True, null=True)
     tipo_permissao = models.ForeignKey('web1.TipoPermissao', related_name='Permissao_Tipo_Permissao')
+    excluido = models.BooleanField(default=False)
+
 
     def __unicode__(self):
         return self.aluno
@@ -42,6 +45,8 @@ class Funcionario(models.Model):
     pessoa_funcionario = models.ForeignKey('auth.User')
     matricula = models.PositiveIntegerField(blank=False)
     # funcao = models.ForeignKey('web1.Funcao', related_name='Funcionario_Funcao')
+    excluido = models.BooleanField(default=False)
+
 
     def __unicode__(self):
         return self.pessoa_funcionario.get_full_name()
@@ -74,6 +79,8 @@ class Curso(models.Model):
     duracao = models.CharField(max_length=20)
     tipo_oferta = models.ForeignKey('web1.TipoOferta', related_name='Curso_Oferta')
     coordenador = models.CharField(max_length=200)
+    excluido = models.BooleanField(default=False)
+
 
     def __unicode__(self):
         return self.descricao
@@ -86,6 +93,8 @@ class Turma(models.Model):
     nome = models.CharField(max_length=20)
     descricao = models.CharField(max_length=50)
     ano = models.CharField(max_length=5)
+    excluido = models.BooleanField(default=False)
+
 
     def __unicode__(self):
         return self.descricao
