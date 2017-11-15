@@ -1,10 +1,12 @@
 # coding: utf-8
 
 from django.db import models
+from django.core.validators import MinValueValidator
+
 
 
 class Aluno(models.Model):
-    matricula = models.PositiveIntegerField()
+    matricula = models.IntegerField(validators=[MinValueValidator(0)], max_length=20)
     nome = models.CharField(max_length=200)
     nome_pai = models.CharField(max_length=200, null=True, blank=True)
     nome_mae = models.CharField(max_length=200)
