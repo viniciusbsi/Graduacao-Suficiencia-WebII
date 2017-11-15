@@ -52,7 +52,9 @@
             <section class="fields">
                 <section class="four wide field">
                     <label>Matrícula:<i class="asterisk icon red"></i></label>
-                    {{ form.matricula }}
+                    <section class="matricula">
+                        {{ form.matricula }}
+                    </section>
                     {% if form.matricula.errors %}
                         <section class="ui pointing red basic label">
                             {{ form.matricula.errors }}
