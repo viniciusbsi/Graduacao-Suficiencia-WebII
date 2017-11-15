@@ -8,7 +8,9 @@ from django.contrib.auth.models import Group
 
 class PermissaoForm(forms.ModelForm):
 
-    aluno = forms.ModelChoiceField(queryset=Aluno.objects.all().exclude(excluido=True))
+    aluno = forms.ModelChoiceField(queryset=Aluno.objects.all().exclude(excluido=True),
+                                   widget=forms.Select(attrs={'placeholder': 'Selecione o segurado',
+                                                                 "class": "ui fluid search selection dropdown"}))
     class Meta:
         model = Permissao
         fields = '__all__'
