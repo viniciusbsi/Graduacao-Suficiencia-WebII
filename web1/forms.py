@@ -8,6 +8,7 @@ from django.contrib.auth.models import Group
 
 class PermissaoForm(forms.ModelForm):
 
+    aluno = forms.ModelChoiceField(queryset=Aluno.objects.all().exclude(excluido=True))
     class Meta:
         model = Permissao
         fields = '__all__'
@@ -40,7 +41,8 @@ class TipoOfertaForm(forms.ModelForm):
 class AlunoForm(forms.ModelForm):
 
     matricula = forms.CharField(max_length=20)
-
+    curso = forms.ModelChoiceField(queryset=Curso.objects.all().exclude(excluido=True))
+    turma = forms.ModelChoiceField(queryset=Turma.objects.all().exclude(excluido=True))
     class Meta:
         model = Aluno
         fields = '__all__'
