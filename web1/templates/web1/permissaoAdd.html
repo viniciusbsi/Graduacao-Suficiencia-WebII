@@ -9,7 +9,7 @@
             {% csrf_token %}
             <section class="fields">
                 <section class="ten wide field">
-                    <label>Descrição:</label>
+                    <label>Descrição:<i class="asterisk icon red"></i></label>
                     {{ form.descricao }}
                     {% if form.descricao.errors %}
                         <section class="ui pointing red basic label">
@@ -18,7 +18,7 @@
                     {% endif %}
                 </section>
                 <section class="six wide field">
-                    <label>Hora solicitada pelo aluno:</label>
+                    <label>Hora solicitada pelo aluno:<i class="asterisk icon red"></i></label>
                     <section class="hora">
                         {{ form.hora_solicitada }}
                     </section>
@@ -31,7 +31,7 @@
             </section>
             <section class="fields">
                 <section class="eight wide field">
-                    <label>Aluno:</label>
+                    <label>Aluno:<i class="asterisk icon red"></i></label>
                     {{ form.aluno }}
                     {% if form.aluno.errors %}
                         <section class="ui pointing red basic label scp-label">
@@ -40,7 +40,7 @@
                     {% endif %}
                 </section>
                 <section class="eight wide field">
-                    <label>Tipo de Permissão:</label>
+                    <label>Tipo de Permissão:<i class="asterisk icon red"></i></label>
                     {{ form.tipo_permissao }}
                     {% if form.tipo_permissao.errors %}
                         <section class="ui pointing red basic label scp-label">

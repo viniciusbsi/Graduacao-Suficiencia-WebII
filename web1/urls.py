@@ -8,6 +8,8 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^$', views.login_verifica_grupo),
     url(r'^permissao/add/$', views.cadastra_permissao, name='cadastra_permissao'),
+    url(r'^tipo_permissao/add/$', views.cadastra_tipo_permissao, name='cadastra_tipo_permissao'),
+    url(r'^tipo_oferta/add/$', views.cadastra_tipo_oferta, name='cadastra_tipo_oferta'),
     url(r'^permissao/lista/$', views.lista_permissoes, name='lista_permissao'),
     url(r'^aluno/add/$', views.cadastra_aluno, name='cadastra_aluno'),
     url(r'^funcionario/add/$', views.cadastra_funcionario, name='cadastra_funcionario'),

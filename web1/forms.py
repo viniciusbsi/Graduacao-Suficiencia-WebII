@@ -25,9 +25,21 @@ class CursoForm(forms.ModelForm):
         model = Curso
         fields = '__all__'
 
+class TipoPermissaoForm(forms.ModelForm):
+
+    class Meta:
+        model = TipoPermissao
+        fields = '__all__'
+
+class TipoOfertaForm(forms.ModelForm):
+
+    class Meta:
+        model = TipoOferta
+        fields = '__all__'
+
 class AlunoForm(forms.ModelForm):
 
-    matricula = forms.CharField(max_length=10)
+    matricula = forms.CharField(max_length=20)
 
     class Meta:
         model = Aluno

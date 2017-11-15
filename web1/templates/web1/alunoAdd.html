@@ -9,7 +9,7 @@
             {% csrf_token %}
             <section class="fields">
                 <section class="eight wide field">
-                    <label>Nome:</label>
+                    <label>Nome:<i class="asterisk icon red"></i></label>
                     {{ form.nome }}
                     {% if form.nome.errors %}
                         <section class="ui pointing red basic label">
@@ -18,7 +18,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>E-mail:</label>
+                    <label>E-mail:<i class="asterisk icon red"></i></label>
                     {{ form.email }}
                     {% if form.email.errors %}
                         <section class="ui pointing red basic label">
@@ -27,11 +27,9 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Matrícula:</label>
+                    <label>Matrícula:<i class="asterisk icon red"></i></label>
                     <section class="matricula">
-                        <section class="matricula">
-                            {{ form.matricula }}
-                        </section>
+                        {{ form.matricula }}
                     </section>
                     {% if form.matricula.errors %}
                         <section class="ui pointing red basic label">
@@ -51,7 +49,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Nome mãe:</label>
+                    <label>Nome mãe:<i class="asterisk icon red"></i></label>
                     {{ form.nome_mae }}
                     {% if form.nome_mae.errors %}
                         <section class="ui pointing red basic label">
@@ -71,7 +69,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Tel. responsável:</label>
+                    <label>Tel. responsável:<i class="asterisk icon red"></i></label>
                     <section class="telefone">
                         {{ form.telefone_responsavel }}
                     </section>
@@ -85,7 +83,7 @@
             <section class="fields">
                 <section class="four wide field"></section>
                 <section class="four wide field">
-                    <label>Curso:</label>
+                    <label>Curso:<i class="asterisk icon red"></i></label>
                     {{ form.curso }}
                     {% if form.curso.errors %}
                         <section class="ui pointing red basic label">
@@ -94,7 +92,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Turma:</label>
+                    <label>Turma:<i class="asterisk icon red"></i></label>
                     {{ form.turma }}
                     {% if form.turma.errors %}
                         <section class="ui pointing red basic label">

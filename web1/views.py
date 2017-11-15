@@ -100,6 +100,35 @@ def cadastra_turma(request):
     return render(request, 'web1/turmaAdd.html', {'form': form, 'grupo_user': 'nupe'})
 
 
+@login_required
+def cadastra_tipo_permissao(request):
+    if request.method == "POST":
+        form = TipoPermissaoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            msg = "Tipo de permissão cadastrada com sucesso!"
+            return render(request, 'web1/funcionario_nupe.html', {'msg': msg, 'grupo_user': 'nupe'})
+        else:
+            print form.errors
+    else:
+        form = TipoPermissaoForm()
+    return render(request, 'web1/tipoPermissaoAdd.html', {'form': form, 'grupo_user': 'nupe'})
+
+@login_required
+def cadastra_tipo_oferta(request):
+    if request.method == "POST":
+        form = TipoOfertaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            msg = "Tipo de oferta cadastrada com sucesso!"
+            return render(request, 'web1/funcionario_nupe.html', {'msg': msg, 'grupo_user': 'nupe'})
+        else:
+            print form.errors
+    else:
+        form = TipoOfertaForm()
+    return render(request, 'web1/tipoOfertaAdd.html', {'form': form, 'grupo_user': 'nupe'})
+
+
 def lista_permissoes(request):
     if 'filtro' in request.GET:
         permissoes = Permissao.objects.filter(Q(aluno__nome__icontains=request.GET.get('filtro'))|
@@ -160,24 +189,25 @@ def cadastra_funcionario(request):
 @login_required
 def GeraComprovantePDF(request, id=None):
     permissao = Permissao.objects.get(pk=id)
-    nome = "static/media/comprovantes/" + str(permissao.aluno.nome) + ".pdf"
-    doc = SimpleDocTemplate("web1/static/media/comprovantes/" + str(permissao.aluno.nome) + ".pdf", pagesize=letter,
+    nome = "static/comprovantes/" + str(permissao.aluno.nome) + ".pdf"
+    doc = SimpleDocTemplate("static/comprovantes/" + str(permissao.aluno.nome) + ".pdf", pagesize=letter,
                             rightMargin=72,
                             leftMargin=72, topMargin=00, bottomMargin=18)
 
     Story = []
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY, spaceBefore=20))
-    styles.add(ParagraphStyle(name='inicial', alignment=TA_CENTER, spaceBefore=50, spaceAfter=50))
+    styles.add(ParagraphStyle(name='inicial', alignment=TA_CENTER, spaceBefore=30, spaceAfter=50, fontSize=15))
     styles.add(ParagraphStyle(name='linhas', alignment=TA_JUSTIFY, spaceBefore=20))
 
     Story.append(Paragraph(u"<b>Autorização</b>", styles["inicial"]))
     Story.append(Paragraph(u"Eu <b>%s</b> na qualidade de servidor do Núcleo pedagógico, apresento justificativa "
-                           u"para o discente <b>%s</b> para entrada/saída sob justificativa de <b>%s</b> na data de "
+                           u"para o discente <b>%s</b> para <b>%s</b> sob justificativa de <b>%s</b> na data de "
                            u"<b>%s</b> às <b>%s</b>" % (
                                permissao.funcionario_nupe.pessoa_funcionario.get_full_name(), permissao.aluno.nome,
+                               permissao.tipo_permissao.descricao,
                                permissao.descricao, str(permissao.data.strftime('%d/%m/%Y')),
-                               str(permissao.hora_solicitada)[:-3] + "h"), styles["inicial"]))
+                               str(permissao.hora_solicitada)[:-3] + "h"), styles["linhas"]))
     Story.append(Spacer(1, 12))
     doc.build(Story)
     return redirect("/" + nome)

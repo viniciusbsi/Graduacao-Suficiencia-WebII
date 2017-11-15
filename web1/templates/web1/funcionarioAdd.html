@@ -9,7 +9,7 @@
             {% csrf_token %}
             <section class="fields">
                 <section class="four wide field">
-                    <label>Nome:</label>
+                    <label>Nome:<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.first_name }}
                     {% if form_pessoa.first_name.errors %}
                         <section class="ui pointing red basic label">
@@ -18,7 +18,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Sobrenome:</label>
+                    <label>Sobrenome:<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.last_name }}
                     {% if form_pessoa.last_name.errors %}
                         <section class="ui pointing red basic label">
@@ -27,7 +27,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>E-mail:</label>
+                    <label>E-mail:<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.email }}
                     {% if form_pessoa.email.errors %}
                         <section class="ui pointing red basic label">
@@ -36,7 +36,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Função:</label>
+                    <label>Função:<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.groups }}
                     {% if form_pessoa.groups.errors %}
                         <section class="ui pointing red basic label">
@@ -47,7 +47,7 @@
             </section>
             <section class="fields">
                 <section class="four wide field">
-                    <label>Matrícula:</label>
+                    <label>Matrícula:<i class="asterisk icon red"></i></label>
                     {{ form.matricula }}
                     {% if form.matricula.errors %}
                         <section class="ui pointing red basic label">
@@ -56,7 +56,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Login:</label>
+                    <label>Login:<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.username }}
                     {% if form_pessoa.username.errors %}
                         <section class="ui pointing red basic label">
@@ -65,7 +65,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Senha:</label>
+                    <label>Senha:<i class="asterisk icon red"></i></label>
                     {{ form_senha.password }}
                     {% if form_senha.password.errors %}
                         <section class="ui pointing red basic label">
@@ -74,7 +74,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Senha novamente:</label>
+                    <label>Senha novamente:<i class="asterisk icon red"></i></label>
                     {{ form_senha.password_checker }}
                     {% if form_senha.password_checker.errors %}
                         <section class="ui pointing red basic label">
@@ -84,7 +84,7 @@
                 </section>
             </section>
             <section class="ui two buttons">
-                <input class="ui button fluid" type="submit" value="Voltar">
+                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
                 <input class="ui button fluid positive" type="submit" value="Cadastrar">
             </section>
         </form>

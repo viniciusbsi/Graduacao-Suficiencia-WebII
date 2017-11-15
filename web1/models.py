@@ -69,9 +69,9 @@ class TipoPermissao(models.Model):
         return self.descricao
 
 class Curso(models.Model):
-    nome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=20)
     descricao = models.CharField(max_length=50)
-    duracao = models.CharField(max_length=50)
+    duracao = models.CharField(max_length=20)
     tipo_oferta = models.ForeignKey('web1.TipoOferta', related_name='Curso_Oferta')
     coordenador = models.CharField(max_length=200)
 
@@ -83,9 +83,19 @@ class Curso(models.Model):
 
 
 class Turma(models.Model):
-    nome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=20)
     descricao = models.CharField(max_length=50)
     ano = models.CharField(max_length=5)
+
+    def __unicode__(self):
+        return self.descricao
+
+    def __str__(self):
+        return self.descricao
+
+
+class TipoOferta(models.Model):
+    descricao = models.CharField(max_length=50)
 
     def __unicode__(self):
         return self.descricao

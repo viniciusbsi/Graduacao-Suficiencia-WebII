@@ -8,9 +8,17 @@
         <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_curso' %}">
             {% csrf_token %}
             <section class="fields">
-                <section class="five wide field"></section>
-                <section class="six wide field">
-                    <label>Descrição:</label>
+                <section class="four wide field">
+                    <label>Nome:<i class="asterisk icon red"></i></label>
+                    {{ form.nome }}
+                    {% if form.nome.errors %}
+                        <section class="ui pointing red basic label">
+                            {{ form.nome.errors }}
+                        </section>
+                    {% endif %}
+                </section>
+                <section class="twelve wide field">
+                    <label>Descrição:<i class="asterisk icon red"></i></label>
                     {{ form.descricao }}
                     {% if form.descricao.errors %}
                         <section class="ui pointing red basic label">
@@ -18,7 +26,36 @@
                         </section>
                     {% endif %}
                 </section>
-                <section class="five wide field"></section>
+            </section>
+            <section class="fields">
+                <section class="two wide field"></section>
+                <section class="four wide field">
+                    <label>Duração:<i class="asterisk icon red"></i></label>
+                    {{ form.duracao }}
+                    {% if form.duracao.errors %}
+                        <section class="ui pointing red basic label">
+                            {{ form.duracao.errors }}
+                        </section>
+                    {% endif %}
+                </section>
+                <section class="four wide field">
+                    <label>Tipo de Oferta:<i class="asterisk icon red"></i></label>
+                    {{ form.tipo_oferta }}
+                    {% if form.tipo_oferta.errors %}
+                        <section class="ui pointing red basic label">
+                            {{ form.tipo_oferta.errors }}
+                        </section>
+                    {% endif %}
+                </section>
+                <section class="four wide field">
+                    <label>Coordenador:<i class="asterisk icon red"></i></label>
+                    {{ form.coordenador }}
+                    {% if form.coordenador.errors %}
+                        <section class="ui pointing red basic label">
+                            {{ form.coordenador.errors }}
+                        </section>
+                    {% endif %}
+                </section>
             </section>
             <section class="ui two buttons">
                 <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>

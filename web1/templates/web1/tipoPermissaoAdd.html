@@ -4,19 +4,11 @@
     <section class="two wide column"></section>
     <section class="ten wide column">
         <section class="espaco"></section>
-        <h1><i class="list icon"></i> Cadastrar turma</h1>
-        <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_turma' %}">
+        <h1><i class="list icon"></i>Cadastrar Tipo de Permissão</h1>
+        <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_tipo_permissao' %}">
             {% csrf_token %}
             <section class="fields">
-                <section class="four wide field">
-                    <label>Nome:<i class="asterisk icon red"></i></label>
-                    {{ form.nome }}
-                    {% if form.nome.errors %}
-                        <section class="ui pointing red basic label">
-                            {{ form.nome.errors }}
-                        </section>
-                    {% endif %}
-                </section>
+                <section class="four wide field"></section>
                 <section class="eight wide field">
                     <label>Descrição:<i class="asterisk icon red"></i></label>
                     {{ form.descricao }}
@@ -26,17 +18,7 @@
                         </section>
                     {% endif %}
                 </section>
-                <section class="four wide field">
-                    <label>Ano:<i class="asterisk icon red"></i></label>
-                    <section class="ano">
-                        {{ form.ano }}
-                    </section>
-                    {% if form.ano.errors %}
-                        <section class="ui pointing red basic label">
-                            {{ form.ano.errors }}
-                        </section>
-                    {% endif %}
-                </section>
+                <section class="four wide field"></section>
             </section>
             <section class="ui two buttons">
                 <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
