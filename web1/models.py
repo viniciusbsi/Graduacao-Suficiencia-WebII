@@ -6,7 +6,7 @@ from django.core.validators import MinValueValidator
 
 
 class Aluno(models.Model):
-    matricula = models.IntegerField(validators=[MinValueValidator(0)], max_length=20)
+    matricula = models.IntegerField(validators=[MinValueValidator(0)], max_length=10)
     nome = models.CharField(max_length=200)
     nome_pai = models.CharField(max_length=200, null=True, blank=True)
     nome_mae = models.CharField(max_length=200)
@@ -45,7 +45,7 @@ class Permissao(models.Model):
 
 class Funcionario(models.Model):
     pessoa_funcionario = models.ForeignKey('auth.User')
-    matricula = models.IntegerField(validators=[MinValueValidator(0)], max_length=20)
+    matricula = models.IntegerField(validators=[MinValueValidator(0)], max_length=10)
     # funcao = models.ForeignKey('web1.Funcao', related_name='Funcionario_Funcao')
     excluido = models.BooleanField(default=False)
 
