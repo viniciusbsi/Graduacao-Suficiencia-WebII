@@ -45,7 +45,7 @@ class Permissao(models.Model):
 
 class Funcionario(models.Model):
     pessoa_funcionario = models.ForeignKey('auth.User')
-    matricula = models.IntegerField(validators=[MinValueValidator(0)], max_length=20, blank=False)
+    matricula = models.IntegerField(validators=[MinValueValidator(0)], max_length=20)
     # funcao = models.ForeignKey('web1.Funcao', related_name='Funcionario_Funcao')
     excluido = models.BooleanField(default=False)
 
