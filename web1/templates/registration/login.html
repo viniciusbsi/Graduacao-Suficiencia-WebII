@@ -1,6 +1,42 @@
-{% extends "web1/base.html" %}
+{% load staticfiles user_tags %}
+<html>
+<head>
+    <title>Sistema de Controle de Permanência</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'semanticui/semantic.min.css' %}">
+    <script type="application/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script type="application/javascript" src="{% static 'semanticui/semantic.min.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/scp.js' %}"></script>
+    <script src="{% static 'js/jquery.mask.js' %}"></script>
+    <link rel="icon" href="{% static 'images/logo-ifc-icon.png' %}" type="image/x-icon">
+</head>
 
-{% block content %}
+<body>
+<nav class="ui stackable borderless menu">
+    <section class="item">
+        <a class="ui medium image" href="{% url 'web1.views.login_verifica_grupo' %}">
+            <img src="{% static 'images/logo-ifc.png' %}"/>
+        </a>
+    </section>
+    <h3 class="item header">
+        <span class="sub header">
+            <b>SISTEMA DE CONTROLE DE PERMANÊNCIA</b>
+        </span>
+    </h3>
+    {% if user.is_authenticated %}
+        <section class="right menu">
+        <span class="item">
+            <i class="ui right large user icon"></i>
+            {{ user.username }}
+        </span>
+            <a href="{% url 'django.contrib.auth.views.logout' %}" class="item">
+                <i class="sign out icon"></i>
+                Sair
+            </a>
+        </section>
+    {% endif %}
+</nav>
+<article class="ui centered grid stackable">
     <div class="ui six wide column ">
         <h1 class="ui centered header">Login</h1>
         <form class="ui form segment" method="post" action="{% url 'django.contrib.auth.views.login' %}">
@@ -21,4 +57,28 @@
             </div>
         </form>
     </div>
-{% endblock %}
+</article>
+<footer class="ui black inverted vertical footer relaxed segment">
+    <section class="ui five column middle aligned centered inverted divided stackable grid">
+        <section class="two wide column">
+            <h5 class="ui inverted icon header">
+                <i class="calendar icon"></i>
+                <section class="content">
+                    SCP
+                    <section class="sub header">© Copyright 2017.</section>
+                    <section class="sub header">Vinícius de Oliveira</section>
+                </section>
+            </h5>
+        </section>
+        <section class="three wide column">
+            <ul class="ui divided celled relaxed inverted list">
+                <li class="item"><a href="https://github.com/viniciusbsi" target="_blank"><i
+                        class="ui github large icon"></i>Github @viniciusbsi</a></li>
+                <li class="item"><a href="https://www.linkedin.com/in/vinicius-o-44267511a/" target="_blank"><i
+                        class="ui linkedin large icon"></i>Linkedin</a></li>
+            </ul>
+        </section>
+    </section>
+</footer>
+</body>
+</html>
