@@ -42,7 +42,6 @@ class TipoOfertaForm(forms.ModelForm):
 
 class AlunoForm(forms.ModelForm):
 
-    matricula = forms.CharField(max_length=20)
     curso = forms.ModelChoiceField(queryset=Curso.objects.all().exclude(excluido=True))
     turma = forms.ModelChoiceField(queryset=Turma.objects.all().exclude(excluido=True))
     class Meta:
