@@ -6,9 +6,9 @@
         <section class="espaco"></section>
         <h1><i class="list icon"></i> Criar Permissão</h1>
         {% if permissao %}
-            <form class="ui form segment" method="POST" action="{% url 'web1.views.edita_permissao' permissao.id %}">
+            <form class="ui form segment" method="POST" action="{% url 'web1.views.edita_permissao' permissao.id aluno.id %}">
         {% else %}
-            <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_permissao' %}">
+            <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_permissao' aluno.id %}">
         {% endif %}
 
             {% csrf_token %}
@@ -37,12 +37,14 @@
             <section class="fields">
                 <section class="eight wide field">
                     <label>Aluno:<i class="asterisk icon red"></i></label>
-                    {{ form.aluno }}
-                    {% if form.aluno.errors %}
-                        <section class="ui pointing red basic label scp-label">
-                            {{ form.aluno.errors }}
-                        </section>
-                    {% endif %}
+                    <input type="text" disabled="disabled" value="{{ aluno.nome }}"/>
+                    <input type="hidden" id="id_aluno" name="aluno" value="{{ aluno.id }}">
+{#                    {{ form.aluno }}#}
+{#                    {% if form.aluno.errors %}#}
+{#                        <section class="ui pointing red basic label scp-label">#}
+{#                            {{ form.aluno.errors }}#}
+{#                        </section>#}
+{#                    {% endif %}#}
                 </section>
                 <section class="eight wide field">
                     <label>Tipo de Permissão:<i class="asterisk icon red"></i></label>

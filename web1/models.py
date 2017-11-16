@@ -18,10 +18,10 @@ class Aluno(models.Model):
     excluido = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return self.nome
+        return '%s'%self.nome
 
     def __str__(self):
-        return self.nome
+        return '%s'%self.nome
 
 
 class Permissao(models.Model):
@@ -85,10 +85,10 @@ class Curso(models.Model):
 
 
     def __unicode__(self):
-        return self.descricao
+        return self.nome
 
     def __str__(self):
-        return self.descricao
+        return self.nome
 
 
 class Turma(models.Model):
@@ -99,10 +99,10 @@ class Turma(models.Model):
 
 
     def __unicode__(self):
-        return self.descricao
+        return self.nome
 
     def __str__(self):
-        return self.descricao
+        return self.nome
 
 
 class TipoOferta(models.Model):

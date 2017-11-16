@@ -7,8 +7,8 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^$', views.login_verifica_grupo),
-    url(r'^permissao/add/$', views.cadastra_permissao, name='cadastra_permissao'),
-    url(r'^permissao/edit/(?P<id>\d+)/$', views.edita_permissao, name='edita_permissao'),
+    url(r'^permissao/add/(?P<id>\d+)/$', views.cadastra_permissao, name='cadastra_permissao'),
+    url(r'^permissao/edit/(?P<id>\d+)/(?P<id_aluno>\d+)/$', views.edita_permissao, name='edita_permissao'),
     url(r'^tipo_permissao/add/$', views.cadastra_tipo_permissao, name='cadastra_tipo_permissao'),
     url(r'^tipo_oferta/add/$', views.cadastra_tipo_oferta, name='cadastra_tipo_oferta'),
     url(r'^permissao/lista/$', views.lista_permissoes, name='lista_permissao'),
@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^turma/list/$', TurmaList.as_view(), name='turma_list'),
     url(r'^curso/list/$', CursoList.as_view(), name='curso_list'),
     url(r'^remove/aluno/(?P<id>\d+)/$', views.exclui_aluno, name='exclui_aluno'),
+    url(r'^seleciona/aluno/$', views.seleciona_aluno, name='seleciona_aluno'),
     url(r'^remove/funcionario/(?P<id>\d+)/$', views.exclui_funcionario, name='exclui_funcionario'),
     url(r'^remove/permissao/(?P<id>\d+)/$', views.exclui_permissao, name='exclui_permissao'),
     url(r'^remove/turma/(?P<id>\d+)/$', views.exclui_turma, name='exclui_turma'),

@@ -35,6 +35,20 @@ class TurmaList(ListView):
     queryset = Turma.objects.all().exclude(excluido=True)
     template_name = 'web1/turmasLista.html'
 
+@login_required
+def seleciona_aluno(request):
+    if 'filtro_aluno' in request.GET:
+
+        alunos = Aluno.objects.filter(Q(nome__icontains=request.GET.get('filtro_aluno'))|
+            Q(curso__nome__icontains=request.GET.get('filtro_aluno'))|
+            Q(matricula__icontains=request.GET.get('filtro_aluno'))|
+            Q(turma__nome__icontains=request.GET.get('filtro_aluno'))).exclude(excluido=True).distinct()
+        print(alunos)
+    else:
+        alunos = Aluno.objects.all().exclude(excluido=True)
+
+    return render(request, 'web1/selecionaAlunoPermissao.html', {'alunos': alunos, 'grupo_user': 'nupe'})
+
 
 def login_verifica_grupo(request):
     if request.user.is_authenticated():
@@ -55,7 +69,7 @@ def login_verifica_grupo(request):
 
 
 @login_required
-def cadastra_permissao(request):
+def cadastra_permissao(request, id):
     if request.method == "POST":
         form = PermissaoForm(request.POST)
         if form.is_valid():
@@ -70,11 +84,12 @@ def cadastra_permissao(request):
             print form.errors
     else:
         form = PermissaoForm()
-    return render(request, 'web1/permissaoAdd.html', {'form': form, 'grupo_user': 'nupe'})
+        aluno = Aluno.objects.get(pk=id)
+    return render(request, 'web1/permissaoAdd.html', {'form': form, 'grupo_user': 'nupe', 'aluno': aluno})
 
 
 @login_required
-def edita_permissao(request, id):
+def edita_permissao(request, id, id_aluno):
     permissao = Permissao.objects.get(pk=id)
     if request.method == "POST":
         form = PermissaoForm(request.POST, instance=permissao)
@@ -90,7 +105,8 @@ def edita_permissao(request, id):
             print form.errors
     else:
         form = PermissaoForm(instance=permissao)
-    return render(request, 'web1/permissaoAdd.html', {'form': form, 'grupo_user': 'nupe', 'permissao': permissao})
+        aluno = Aluno.objects.get(pk=id_aluno)
+    return render(request, 'web1/permissaoAdd.html', {'form': form, 'grupo_user': 'nupe', 'permissao': permissao, 'aluno':aluno})
 
 
 @login_required

@@ -1,0 +1,39 @@
+{% extends 'web1/base.html' %}
+
+{% block content %}
+    <section class="two wide column"></section>
+    <section class="ten wide column">
+        <section class="espaco"></section>
+        <h1><i class="list icon"></i>Selecione o aluno</h1>
+        <form class="ui form" id="CampoFiltroForm" method="get" action="{% url 'seleciona_aluno' %}">
+            <section class="ui right aligned category search">
+                <section class="ui icon input fluid">
+                    <i class="search icon"></i>
+                    <input type="text" id="id_campo" name="filtro_aluno" placeholder="Pesquisar">
+                </section>
+            </section>
+        </form>
+        <table class="ui celled table green">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Curso</th>
+                <th>Turma</th>
+                <th>Tel. Responsável</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for obj in alunos %}
+                <tr>
+                    <td><a href="{% url 'cadastra_permissao' obj.id %}">{{ obj.nome }}</a></td>
+                    <td>{{ obj.curso }}</td>
+                    <td>{{ obj.turma }}</td>
+                    <td>{{ obj.telefone_responsavel }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+        </table>
+    </section>
+    <section class="two wide column"></section>
+{% endblock content %}
