@@ -59,8 +59,6 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a target="_blank" href="{% url 'web1.views.GeraComprovantePDF' permissao.id %}" class="link">Gerar PDF</a>
-                        </br>
                         {% if user.is_authenticated and request.user|has_group:"Nupe" %}
                             <a href="{% url 'web1.views.edita_permissao' permissao.id permissao.aluno.id %}" class="link">Editar</a>
                             </br>
