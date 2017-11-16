@@ -4,7 +4,7 @@
     <section class="two wide column"></section>
     <section class="ten wide column">
         <section class="espaco"></section>
-        <h1><i class="list icon"></i> Cadastrar turma</h1>
+        <h1><i class="add icon"></i> Cadastrar turma</h1>
         {% if turma %}
             <form class="ui form segment" method="POST" action="{% url 'web1.views.edita_turma' turma.id%}">
         {% else %}

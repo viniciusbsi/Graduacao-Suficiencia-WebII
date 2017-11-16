@@ -37,42 +37,35 @@
     {% endif %}
 </nav>
 <article class="ui centered grid stackable">
-
     {% if user.is_authenticated and request.user|has_group:"Nupe" %}
-        <section class="two wide column scp-menu">
-            <section class="ui secondary vertical menu">
-                <section class="item">
-                    <a href="{% url 'web1.views.login_verifica_grupo' %}"><i class="home icon"></i>Home</a>
+        <section class="ui two wide column vertical menu scp-menu">
+            <a class="item" href="{% url 'web1.views.login_verifica_grupo' %}"><i class="left-aligned home icon"></i>Home</a>
+            <a class="item" href="{% url 'web1.views.seleciona_aluno' %}"><i class="left-aligned write icon"></i>Criar Permissão</a>
+            <a class="item" href="{% url 'web1.views.lista_permissoes' %}"><i class="left-aligned history icon"></i>Histórico</a>
+            <section class="ui dropdown item">
+                <i class="left-aligned add icon"></i>
+                <i class="dropdown icon"></i>
+                Cadastros
+                <section class="menu">
+                    <a class="item" href="{% url 'web1.views.cadastra_aluno' %}"><i class="add icon"></i>Aluno</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_funcionario' %}"><i class="add icon"></i>Funcionario</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_curso' %}"><i class="add icon"></i>Curso</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_turma' %}"><i class="add icon"></i>Turma</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_tipo_permissao' %}"><i class="add icon"></i>Tipo
+                        de permissão</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_tipo_oferta' %}"><i class="add icon"></i>Tipo de
+                        oferta</a>
                 </section>
-                <section class="item">
-                    <a href="{% url 'web1.views.seleciona_aluno' %}"><i class="write icon"></i>Criar Permissão</a>
-                </section>
-                <section class="item">
-                    <a href="{% url 'web1.views.lista_permissoes' %}"><i class="history icon"></i>Histórico</a>
-                </section>
-                <section class="ui dropdown item scp-item">
-                    <section class="item scp-item">
-                        <a><i class="plus home icon"></i>Cadastros<i class="dropdown icon"></i></a>
-                    </section>
-                    <section class="menu">
-                        <a class="item" href="{% url 'web1.views.cadastra_aluno' %}">Aluno</a>
-                        <a class="item" href="{% url 'web1.views.cadastra_funcionario' %}">Funcionario</a>
-                        <a class="item" href="{% url 'web1.views.cadastra_curso' %}">Curso</a>
-                        <a class="item" href="{% url 'web1.views.cadastra_turma' %}">Turma</a>
-                        <a class="item" href="{% url 'web1.views.cadastra_tipo_permissao' %}">Tipo de permissão</a>
-                        <a class="item" href="{% url 'web1.views.cadastra_tipo_oferta' %}">Tipo de oferta</a>
-                    </section>
-                </section>
-                <section class="ui dropdown item scp-item">
-                    <section class="item scp-item">
-                        <a><i class="list home icon"></i>Registros<i class="dropdown icon"></i></a>
-                    </section>
-                    <section class="menu">
-                        <a class="item" href="{% url 'aluno_list' %}">Alunos</a>
-                        <a class="item" href="{% url 'funcionario_list' %}">Funcionarios</a>
-                        <a class="item" href="{% url 'curso_list' %}">Cursos</a>
-                        <a class="item" href="{% url 'turma_list' %}">Turmas</a>
-                    </section>
+            </section>
+            <section class="ui dropdown item">
+                <i class="left-aligned sidebar icon"></i>
+                <i class="dropdown icon"></i>
+                Registros
+                <section class="menu">
+                    <a class="item" href="{% url 'aluno_list' %}"><i class="sidebar icon"></i>Alunos</a>
+                    <a class="item" href="{% url 'funcionario_list' %}"><i class="sidebar icon"></i>Funcionarios</a>
+                    <a class="item" href="{% url 'curso_list' %}"><i class="sidebar icon"></i>Cursos</a>
+                    <a class="item" href="{% url 'turma_list' %}"><i class="sidebar icon"></i>Turmas</a>
                 </section>
             </section>
         </section>

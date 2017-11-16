@@ -9,8 +9,6 @@ nav {
     background-color: yellowgreen !important;
 }
 
-
-
 article {
     min-height: 75% !important;
     padding-top: 8%;
@@ -19,15 +17,18 @@ article {
 footer {
     min-height: 12% !important;
 }
-
+i.left-aligned.icon{
+    float: left !important;
+    /*padding: 0 !important;*/
+    margin: 0 10px 0 0 !important;
+}
 .espaco {
     margin-bottom: 5%;
 }
 
 .scp-menu {
-    background-color: ghostwhite;
+    background-color: ghostwhite !important;
 }
-
 
 .errorlist {
     list-style: none;
