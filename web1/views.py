@@ -205,9 +205,9 @@ def lista_permissoes(request):
     if 'filtro' in request.GET:
         permissoes = Permissao.objects.filter(Q(aluno__nome__icontains=request.GET.get('filtro'))|
             Q(aluno__curso__descricao__icontains=request.GET.get('filtro'))|
-            Q(aluno__turma__descricao__icontains=request.GET.get('filtro'))).exclude(excluido=True)
+            Q(aluno__turma__descricao__icontains=request.GET.get('filtro'))).exclude(excluido=True).exclude(aluno__excluido=True)
     else:
-        permissoes = Permissao.objects.all().order_by('data').exclude(excluido=True)
+        permissoes = Permissao.objects.all().order_by('data').exclude(excluido=True).exclude(aluno__excluido=True)
     return render(request, 'web1/permissaoLista.html', {'permissoes': permissoes, 'grupo_user': 'nupe'})
 
 
