@@ -92,6 +92,7 @@ def cadastra_permissao(request, id):
 @login_required
 def edita_permissao(request, id, id_aluno):
     permissao = Permissao.objects.get(pk=id)
+    aluno = Aluno.objects.get(pk=id_aluno)
     if request.method == "POST":
         form = PermissaoForm(request.POST, instance=permissao)
         if form.is_valid():
@@ -106,7 +107,7 @@ def edita_permissao(request, id, id_aluno):
             print form.errors
     else:
         form = PermissaoForm(instance=permissao)
-        aluno = Aluno.objects.get(pk=id_aluno)
+
     return render(request, 'web1/permissaoAdd.html', {'form': form, 'grupo_user': 'nupe', 'permissao': permissao, 'aluno':aluno})
 
 
