@@ -70,6 +70,7 @@ def login_verifica_grupo(request):
 
 @login_required
 def cadastra_permissao(request, id):
+    aluno = []
     if request.method == "POST":
         form = PermissaoForm(request.POST)
         if form.is_valid():
