@@ -23,7 +23,9 @@
                 <th>Hora</th>
                 <th>Professor</th>
                 <th>Portaria</th>
-                <th>Ações</th>
+                {% if user.is_authenticated and request.user|has_group:"Nupe" %}
+                    <th>Ações</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -58,13 +60,14 @@
                             {{ permissao.verificado_portaria }}
                         {% endif %}
                     </td>
-                    <td>
-                        {% if user.is_authenticated and request.user|has_group:"Nupe" %}
-                            <a href="{% url 'web1.views.edita_permissao' permissao.id permissao.aluno.id %}" class="link">Editar</a>
+                    {% if user.is_authenticated and request.user|has_group:"Nupe" %}
+                        <td>
+                            <a href="{% url 'web1.views.edita_permissao' permissao.id permissao.aluno.id %}"
+                               class="link">Editar</a>
                             </br>
-                            <a href="{% url 'web1.views.exclui_permissao' permissao.id%}" class="link">Excluir</a>
-                        {% endif %}
-                    </td>
+                            <a href="{% url 'web1.views.exclui_permissao' permissao.id %}" class="link">Excluir</a>
+                        </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>

@@ -57,11 +57,11 @@ def login_verifica_grupo(request):
                 return render(request, 'web1/funcionario_nupe.html', {'grupo_user': 'nupe'})
 
             if request.user.groups.get().name == "Portaria":
-                permissoes = Permissao.objects.all().order_by('data')
+                permissoes = Permissao.objects.all().order_by('data').exclude(excluido=True).exclude(aluno__excluido=True)
                 return render(request, 'web1/permissaoLista.html', {'permissoes': permissoes, 'grupo_user': 'portaria'})
 
             if request.user.groups.get().name == "Professor":
-                permissoes = Permissao.objects.all().order_by('data')
+                permissoes = Permissao.objects.all().order_by('data').exclude(excluido=True).exclude(aluno__excluido=True)
                 return render(request, 'web1/permissaoLista.html',
                               {'permissoes': permissoes, 'grupo_user': 'professor'})
     else:
@@ -335,7 +335,7 @@ def ValidaPermissaoProfessor(request, id=None):
     permissao = Permissao.objects.get(pk=id)
     permissao.verificado_professor = Funcionario.objects.get(pessoa_funcionario=request.user.id)
     permissao.save()
-    permissoes = Permissao.objects.all()
+    permissoes = Permissao.objects.all().exclude(excluido=True).exclude(aluno__excluido=True)
     return render(request, 'web1/permissaoLista.html', {'permissoes': permissoes, 'grupo_user': 'professor'})
 
 
@@ -344,7 +344,7 @@ def ValidaPermissaoPortaria(request, id=None):
     permissao = Permissao.objects.get(pk=id)
     permissao.verificado_portaria = Funcionario.objects.get(pessoa_funcionario=request.user.id)
     permissao.save()
-    permissoes = Permissao.objects.all()
+    permissoes = Permissao.objects.all().exclude(excluido=True).exclude(aluno__excluido=True)
     return render(request, 'web1/permissaoLista.html', {'permissoes': permissoes, 'grupo_user': 'portaria'})
 
 
