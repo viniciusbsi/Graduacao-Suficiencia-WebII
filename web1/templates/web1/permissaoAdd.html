@@ -1,66 +1,59 @@
 {% extends 'web1/base.html' %}
 
 {% block content %}
-    <section class="two wide column"></section>
-    <section class="ten wide column">
+    <section class="column"></section>
+    <section class="twelve wide column">
         <section class="espaco"></section>
         <h1><i class="write icon"></i> Criar Permissão</h1>
         {% if permissao %}
-            <form class="ui form segment" method="POST" action="{% url 'web1.views.edita_permissao' permissao.id aluno.id %}">
+            <form class="ui form segment" method="POST"
+                  action="{% url 'web1.views.edita_permissao' permissao.id aluno.id %}">
         {% else %}
             <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_permissao' aluno.id %}">
         {% endif %}
 
-            {% csrf_token %}
-            <section class="fields">
-                <section class="ten wide field">
-                    <label>Descrição:<i class="asterisk icon red"></i></label>
-                    {{ form.descricao }}
-                    {% if form.descricao.errors %}
-                        <section class="ui pointing red basic label">
-                            {{ form.descricao.errors }}
-                        </section>
-                    {% endif %}
+        {% csrf_token %}
+        <section class="field">
+            <label>Aluno:<i class="asterisk icon red"></i></label>
+            <input type="text" disabled="disabled" value="{{ aluno.nome }}"/>
+            <input type="hidden" id="id_aluno" name="aluno" value="{{ aluno.id }}">
+        </section>
+        <section class="two fields">
+            <section class="field">
+                <label>Hora solicitada pelo aluno:<i class="asterisk icon red"></i></label>
+                <section class="hora">
+                    {{ form.hora_solicitada }}
                 </section>
-                <section class="six wide field">
-                    <label>Hora solicitada pelo aluno:<i class="asterisk icon red"></i></label>
-                    <section class="hora">
-                        {{ form.hora_solicitada }}
+                {% if form.hora_solicitada.errors %}
+                    <section class="ui pointing red basic label">
+                        {{ form.hora_solicitada.errors }}
                     </section>
-                    {% if form.hora_solicitada.errors %}
-                        <section class="ui pointing red basic label">
-                            {{ form.hora_solicitada.errors }}
-                        </section>
-                    {% endif %}
-                </section>
+                {% endif %}
             </section>
-            <section class="fields">
-                <section class="eight wide field">
-                    <label>Aluno:<i class="asterisk icon red"></i></label>
-                    <input type="text" disabled="disabled" value="{{ aluno.nome }}"/>
-                    <input type="hidden" id="id_aluno" name="aluno" value="{{ aluno.id }}">
-{#                    {{ form.aluno }}#}
-{#                    {% if form.aluno.errors %}#}
-{#                        <section class="ui pointing red basic label scp-label">#}
-{#                            {{ form.aluno.errors }}#}
-{#                        </section>#}
-{#                    {% endif %}#}
-                </section>
-                <section class="eight wide field">
-                    <label>Tipo de Permissão:<i class="asterisk icon red"></i></label>
-                    {{ form.tipo_permissao }}
-                    {% if form.tipo_permissao.errors %}
-                        <section class="ui pointing red basic label scp-label">
-                            {{ form.tipo_permissao.errors }}
-                        </section>
-                    {% endif %}
-                </section>
+            <section class="field">
+                <label>Tipo de Permissão:<i class="asterisk icon red"></i></label>
+                {{ form.tipo_permissao }}
+                {% if form.tipo_permissao.errors %}
+                    <section class="ui pointing red basic label scp-label">
+                        {{ form.tipo_permissao.errors }}
+                    </section>
+                {% endif %}
             </section>
-            <section class="ui two buttons">
-                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
-                <input class="ui button fluid positive" type="submit" value="Cadastrar">
+        </section>
+        <section class="field">
+                <label>Descrição:<i class="asterisk icon red"></i></label>
+                {{ form.descricao }}
+                {% if form.descricao.errors %}
+                    <section class="ui pointing red basic label">
+                        {{ form.descricao.errors }}
+                    </section>
+                {% endif %}
             </section>
+        <section class="ui two buttons">
+            <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
+            <input class="ui button fluid positive" type="submit" value="Cadastrar">
+        </section>
         </form>
     </section>
-    <section class="two wide column"></section>
+    <section class="column"></section>
 {% endblock content %}

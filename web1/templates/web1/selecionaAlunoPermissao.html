@@ -1,8 +1,8 @@
 {% extends 'web1/base.html' %}
 
 {% block content %}
-    <section class="two wide column"></section>
-    <section class="ten wide column">
+    <section class="column"></section>
+    <section class="twelve wide column">
         <section class="espaco"></section>
         <h2 class="ui header">
             <i class="write icon"></i>
@@ -25,7 +25,7 @@
                 <th>Nome</th>
                 <th>Curso</th>
                 <th>Turma</th>
-                <th>Tel. Responsável</th>
+                <th>Matrícula</th>
             </tr>
             </thead>
             <tbody>
@@ -34,12 +34,12 @@
                     <td><a href="{% url 'cadastra_permissao' obj.id %}">{{ obj.nome }}</a></td>
                     <td>{{ obj.curso }}</td>
                     <td>{{ obj.turma }}</td>
-                    <td>{{ obj.telefone_responsavel }}</td>
+                    <td>{{ obj.matricula }}</td>
                 </tr>
             {% endfor %}
             </tbody>
             <tfoot>
         </table>
     </section>
-    <section class="two wide column"></section>
+    <section class="column"></section>
 {% endblock content %}

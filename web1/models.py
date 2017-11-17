@@ -6,7 +6,7 @@ from django.core.validators import MinValueValidator
 
 
 class Aluno(models.Model):
-    matricula = models.IntegerField(validators=[MinValueValidator(0)], max_length=10)
+    matricula = models.IntegerField(validators=[MinValueValidator(0)])
     nome = models.CharField(max_length=200)
     nome_pai = models.CharField(max_length=200, null=True, blank=True)
     nome_mae = models.CharField(max_length=200)
@@ -26,7 +26,7 @@ class Aluno(models.Model):
 
 class Permissao(models.Model):
     data = models.DateField()
-    descricao = models.CharField(max_length=50)
+    descricao = models.TextField(max_length=500)
     hora_solicitada = models.TimeField()
     funcionario_nupe = models.ForeignKey('web1.Funcionario', related_name='Permissao_FuncionarioNupe')
     aluno = models.ForeignKey('web1.Aluno', related_name='Permissao_Aluno')
@@ -45,7 +45,7 @@ class Permissao(models.Model):
 
 class Funcionario(models.Model):
     pessoa_funcionario = models.ForeignKey('auth.User')
-    matricula = models.IntegerField(validators=[MinValueValidator(0)], max_length=10)
+    matricula = models.IntegerField(validators=[MinValueValidator(0)])
     # funcao = models.ForeignKey('web1.Funcao', related_name='Funcionario_Funcao')
     excluido = models.BooleanField(default=False)
 
@@ -58,7 +58,7 @@ class Funcionario(models.Model):
 
 
 class Funcao(models.Model):
-    descricao = models.CharField(max_length=50)
+    descricao = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.descricao
@@ -67,7 +67,7 @@ class Funcao(models.Model):
         return self.descricao
 
 class TipoPermissao(models.Model):
-    descricao = models.CharField(max_length=50)
+    descricao = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.descricao
@@ -76,8 +76,8 @@ class TipoPermissao(models.Model):
         return self.descricao
 
 class Curso(models.Model):
-    nome = models.CharField(max_length=20)
-    descricao = models.CharField(max_length=50)
+    nome = models.CharField(max_length=200)
+    descricao = models.TextField(max_length=500)
     duracao = models.CharField(max_length=20)
     tipo_oferta = models.ForeignKey('web1.TipoOferta', related_name='Curso_Oferta')
     coordenador = models.CharField(max_length=200)
@@ -92,8 +92,8 @@ class Curso(models.Model):
 
 
 class Turma(models.Model):
-    nome = models.CharField(max_length=20)
-    descricao = models.CharField(max_length=50)
+    nome = models.CharField(max_length=200)
+    descricao = models.TextField(max_length=500)
     ano = models.CharField(max_length=5)
     excluido = models.BooleanField(default=False)
 
@@ -106,7 +106,7 @@ class Turma(models.Model):
 
 
 class TipoOferta(models.Model):
-    descricao = models.CharField(max_length=50)
+    descricao = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.descricao
