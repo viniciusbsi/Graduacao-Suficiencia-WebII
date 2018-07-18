@@ -1,5 +1,5 @@
 {% extends 'web1/base.html' %}
-
+{% load i18n %}
 {% block content %}
     <section class="column"></section>
     <section class="twelve wide column">
@@ -7,25 +7,25 @@
         <h2 class="ui header">
             <i class="write icon"></i>
             <div class="content">
-                Criar Permissão
-                <div class="sub header">Selecione um aluno para criar a permissão</div>
+                {% trans "Criar Permissão" %}
+                <div class="sub header">{% trans "Selecione um aluno para criar a permissão" %}</div>
             </div>
         </h2>
         <form class="ui form" id="CampoFiltroForm" method="get" action="{% url 'seleciona_aluno' %}">
             <section class="ui right aligned category search">
                 <section class="ui icon input fluid">
                     <i class="search icon"></i>
-                    <input type="text" id="id_campo" name="filtro_aluno" placeholder="Pesquisar">
+                    <input type="text" id="id_campo" name="filtro_aluno" placeholder="{% trans "Pesquisar" %}">
                 </section>
             </section>
         </form>
         <table class="ui celled table green">
             <thead>
             <tr>
-                <th>Nome</th>
-                <th>Curso</th>
-                <th>Turma</th>
-                <th>Matrícula</th>
+                <th>{% trans "Nome" %}</th>
+                <th>{% trans "Curso" %}</th>
+                <th>{% trans "Turma" %}</th>
+                <th>{% trans "Matrícula" %}</th>
             </tr>
             </thead>
             <tbody>

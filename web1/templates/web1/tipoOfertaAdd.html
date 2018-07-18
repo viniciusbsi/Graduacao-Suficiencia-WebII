@@ -1,4 +1,5 @@
 {% extends 'web1/base.html' %}
+{% load i18n %}
 
 {% block content %}
     <section class="column"></section>
@@ -8,7 +9,7 @@
         <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_tipo_oferta' %}">
             {% csrf_token %}
             <section class="field">
-                <label>Nome:<i class="asterisk icon red"></i></label>
+                <label>{% trans "Nome" %}:<i class="asterisk icon red"></i></label>
                 {{ form.descricao }}
                 {% if form.descricao.errors %}
                     <section class="ui pointing red basic label">
@@ -17,8 +18,8 @@
                 {% endif %}
             </section>
             <section class="ui two buttons">
-                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
-                <input class="ui button fluid positive" type="submit" value="Cadastrar">
+                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">{% trans "Voltar" %}</a>
+                <input class="ui button fluid positive" type="submit" value="{% trans "Cadastrar" %}">
             </section>
         </form>
     </section>

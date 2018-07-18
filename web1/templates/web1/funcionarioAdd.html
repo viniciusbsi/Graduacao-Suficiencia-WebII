@@ -1,10 +1,10 @@
 {% extends 'web1/base.html' %}
-
+{% load i18n %}
 {% block content %}
     <section class="one wide column"></section>
     <section class="twelve wide column">
         <section class="espaco"></section>
-        <h1><i class="plus icon"></i> Cadastro de Funcionário</h1>
+        <h1><i class="plus icon"></i>{% trans "Cadastro de Funcionário" %}</h1>
         {% if funcionario %}
             <form class="ui segment form" method="POST" action="{% url 'web1.views.edita_funcionario' funcionario.id%}">
         {% else %}
@@ -13,7 +13,7 @@
             {% csrf_token %}
             <section class="fields">
                 <section class="four wide field">
-                    <label>Nome:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Nome" %}<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.first_name }}
                     {% if form_pessoa.first_name.errors %}
                         <section class="ui pointing red basic label">
@@ -22,7 +22,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Sobrenome:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Sobrenome" %}<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.last_name }}
                     {% if form_pessoa.last_name.errors %}
                         <section class="ui pointing red basic label">
@@ -31,7 +31,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>E-mail:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "E-mail" %}<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.email }}
                     {% if form_pessoa.email.errors %}
                         <section class="ui pointing red basic label">
@@ -40,7 +40,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Função:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Função" %}<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.groups }}
                     {% if form_pessoa.groups.errors %}
                         <section class="ui pointing red basic label">
@@ -51,7 +51,7 @@
             </section>
             <section class="fields">
                 <section class="four wide field">
-                    <label>Matrícula:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Matrícula" %}<i class="asterisk icon red"></i></label>
                     <section class="matricula">
                         {{ form.matricula }}
                     </section>
@@ -62,7 +62,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Login:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Login" %}<i class="asterisk icon red"></i></label>
                     {{ form_pessoa.username }}
                     {% if form_pessoa.username.errors %}
                         <section class="ui pointing red basic label">
@@ -71,7 +71,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Senha:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Senha" %}<i class="asterisk icon red"></i></label>
                     {{ form_senha.password }}
                     {% if form_senha.password.errors %}
                         <section class="ui pointing red basic label">
@@ -80,7 +80,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Senha novamente:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Senha novamente" %}<i class="asterisk icon red"></i></label>
                     {{ form_senha.password_checker }}
                     {% if form_senha.password_checker.errors %}
                         <section class="ui pointing red basic label">
@@ -90,7 +90,7 @@
                 </section>
             </section>
             <section class="ui two buttons">
-                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
+                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">{% trans "Voltar" %}</a>
                 <input class="ui button fluid positive" type="submit" value="Cadastrar">
             </section>
         </form>

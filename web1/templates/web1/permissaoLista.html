@@ -1,30 +1,30 @@
 {% extends 'web1/base.html' %}
 {% load staticfiles user_tags %}
-
+{% load i18n %}
 {% block content %}
     <section class="one wide column"></section>
     <section class="twelve wide column">
         <section class="espaco"></section>
-        <h1><i class="history icon"></i>Histórico</h1>
+        <h1><i class="history icon"></i>{% trans "Histórico" %}</h1>
         <form class="ui form" id="CampoFiltroForm" method="get" action="{% url 'lista_permissao' %}">
             <section class="ui right aligned category search">
                 <section class="ui icon input fluid">
                     <i class="search icon"></i>
-                    <input type="text" id="id_campo" name="filtro" placeholder="Pesquisar">
+                    <input type="text" id="id_campo" name="filtro" placeholder="{% trans "Pesquisar" %}">
                 </section>
             </section>
         </form>
         <table class="ui celled table green">
             <thead>
             <tr>
-                <th>Aluno</th>
-                <th>Descrição</th>
-                <th>Funcionario Nupe</th>
-                <th>Hora</th>
-                <th>Professor</th>
-                <th>Portaria</th>
+                <th>{% trans "Aluno" %}</th>
+                <th>{% trans "Descrição" %}</th>
+                <th>{% trans "Funcionario Nupe" %}</th>
+                <th>{% trans "Hora" %}</th>
+                <th>{% trans "Professor" %}</th>
+                <th>{% trans "Portaria" %}</th>
                 {% if user.is_authenticated and request.user|has_group:"Nupe" %}
-                    <th>Ações</th>
+                    <th>{% trans "Ações" %}</th>
                 {% endif %}
             </tr>
             </thead>
@@ -39,7 +39,7 @@
                         {% if permissao.verificado_professor == None %}
                             <i class="remove circle outline icon red large"></i>
                             {% if grupo_user == 'professor' %}
-                                (<a href="{% url 'web1.views.ValidaPermissaoProfessor' permissao.id %}" class="link">Validar</a>
+                                (<a href="{% url 'web1.views.ValidaPermissaoProfessor' permissao.id %}" class="link">{% trans "Validar" %}</a>
                                 )
                             {% endif %}
                         {% else %}
@@ -51,7 +51,7 @@
                         {% if permissao.verificado_portaria == None %}
                             <i class="remove circle outline icon red large"></i>
                             {% if grupo_user == 'portaria' %}
-                                (<a href="{% url 'web1.views.ValidaPermissaoPortaria' permissao.id %}" class="link">Validar</a>
+                                (<a href="{% url 'web1.views.ValidaPermissaoPortaria' permissao.id %}" class="link">{% trans "Validar" %}</a>
                                 )
                             {% endif %}
 
@@ -63,9 +63,9 @@
                     {% if user.is_authenticated and request.user|has_group:"Nupe" %}
                         <td>
                             <a href="{% url 'web1.views.edita_permissao' permissao.id permissao.aluno.id %}"
-                               class="link">Editar</a>
+                               class="link">{% trans "Editar" %}</a>
                             </br>
-                            <a href="{% url 'web1.views.exclui_permissao' permissao.id %}" class="link">Excluir</a>
+                            <a href="{% url 'web1.views.exclui_permissao' permissao.id %}" class="link">{% trans "Excluir" %}</a>
                         </td>
                     {% endif %}
                 </tr>

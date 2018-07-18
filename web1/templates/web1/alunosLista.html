@@ -1,18 +1,18 @@
 {% extends 'web1/base.html' %}
-
+{% load i18n %}
 {% block content %}
     <section class="column"></section>
     <section class="twelve wide column">
         <section class="espaco"></section>
-        <h1><i class="sidebar icon"></i> Lista de Alunos</h1>
+        <h1><i class="sidebar icon"></i>{% trans "Lista de Alunos" %}</h1>
         <table class="ui celled table green">
             <thead>
             <tr>
-                <th>Nome</th>
-                <th>Curso</th>
-                <th>Turma</th>
-                <th>Matrícula</th>
-                <th class="one wide column">Ações</th>
+                <th>{% trans "Nome" %}:</th>
+                <th>{% trans "Curso" %}</th>
+                <th>{% trans "Turma" %}</th>
+                <th>{% trans "Matrícula" %}</th>
+                <th class="one wide column">{% trans "Ações" %}</th>
             </tr>
             </thead>
             <tbody>
@@ -22,9 +22,9 @@
                     <td>{{ obj.curso }}</td>
                     <td>{{ obj.turma }}</td>
                     <td>{{ obj.matricula }}</td>
-                    <td><a href="{% url 'web1.views.edita_aluno' obj.id %}" class="link">Editar</a>
+                    <td><a href="{% url 'web1.views.edita_aluno' obj.id %}" class="link">{% trans "Editar" %}</a>
                         </br>
-                        <a href="{% url 'web1.views.exclui_aluno' obj.id%}" class="link">Excluir</a></td>
+                        <a href="{% url 'web1.views.exclui_aluno' obj.id%}" class="link">{% trans "Excluir" %}</a></td>
                 </tr>
             {% endfor %}
             </tbody>

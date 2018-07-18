@@ -1,16 +1,16 @@
 {% extends 'web1/base.html' %}
-
+{% load i18n %}
 {% block content %}
     <section class="column"></section>
     <section class="twelve wide column">
         <section class="espaco"></section>
-        <h1><i class="sidebar icon"></i> Lista de Turmas</h1>
+        <h1><i class="sidebar icon"></i>{% trans "Lista de Turmas" %}</h1>
         <table class="ui celled table green">
             <thead>
             <tr>
-                <th>Descrição</th>
-                <th class="one wide column">Ano</th>
-                <th class="one wide column">Ações</th>
+                <th>{% trans "Descrição" %}</th>
+                <th class="one wide column">{% trans "Ano" %}</th>
+                <th class="one wide column">{% trans "Ações" %}</th>
             </tr>
             </thead>
             <tbody>
@@ -18,9 +18,9 @@
                 <tr>
                     <td>{{ obj.descricao }}</td>
                     <td>{{ obj.ano }}</td>
-                    <td><a href="{% url 'web1.views.edita_turma' obj.id %}" class="link">Editar</a>
+                    <td><a href="{% url 'web1.views.edita_turma' obj.id %}" class="link">{% trans "Editar" %}</a>
                         </br>
-                        <a href="{% url 'web1.views.exclui_turma' obj.id%}" class="link">Excluir</a></td>
+                        <a href="{% url 'web1.views.exclui_turma' obj.id%}" class="link">{% trans "Excluir" %}</a></td>
                 </tr>
             {% endfor %}
             </tbody>

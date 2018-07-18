@@ -1,10 +1,10 @@
 {% extends 'web1/base.html' %}
-
+{% load i18n %}
 {% block content %}
     <section class="column"></section>
     <section class="twelve wide column">
         <section class="espaco"></section>
-        <h1><i class="plus icon"></i> Cadastrar Curso</h1>
+        <h1><i class="plus icon"></i>{% trans "Cadastrar Curso" %}</h1>
         {% if curso %}
             <form class="ui form segment" method="POST" action="{% url 'web1.views.edita_curso' curso.id %}">
         {% else %}
@@ -13,7 +13,7 @@
         {% csrf_token %}
         <section class="two fields">
             <section class="field">
-                <label>Nome:<i class="asterisk icon red"></i></label>
+                <label>{% trans "Nome" %}<i class="asterisk icon red"></i></label>
                 {{ form.nome }}
                 {% if form.nome.errors %}
                     <section class="ui pointing red basic label">
@@ -22,7 +22,7 @@
                 {% endif %}
             </section>
             <section class="field">
-                <label>Coordenador:<i class="asterisk icon red"></i></label>
+                <label>{% trans "Coordenador" %}<i class="asterisk icon red"></i></label>
                 {{ form.coordenador }}
                 {% if form.coordenador.errors %}
                     <section class="ui pointing red basic label">
@@ -33,7 +33,7 @@
         </section>
         <section class="two fields">
             <section class="field">
-                <label>Duração:<i class="asterisk icon red"></i></label>
+                <label>{% trans "Duração" %}<i class="asterisk icon red"></i></label>
                 {{ form.duracao }}
                 {% if form.duracao.errors %}
                     <section class="ui pointing red basic label">
@@ -42,7 +42,7 @@
                 {% endif %}
             </section>
             <section class="field">
-                <label>Tipo de Oferta:<i class="asterisk icon red"></i></label>
+                <label>{% trans "Tipo de Oferta" %}:<i class="asterisk icon red"></i></label>
                 {{ form.tipo_oferta }}
                 {% if form.tipo_oferta.errors %}
                     <section class="ui pointing red basic label">
@@ -52,7 +52,7 @@
             </section>
         </section>
         <section class="field">
-            <label>Descrição:<i class="asterisk icon red"></i></label>
+            <label>{% trans "Descrição" %}<i class="asterisk icon red"></i></label>
             {{ form.descricao }}
             {% if form.descricao.errors %}
                 <section class="ui pointing red basic label">
@@ -61,8 +61,8 @@
             {% endif %}
         </section>
         <section class="ui two buttons">
-            <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
-            <input class="ui button fluid positive" type="submit" value="Cadastrar">
+            <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">{% trans "Voltar" %}</a>
+            <input class="ui button fluid positive" type="submit" value="{% trans "Cadastrar" %}">
         </section>
         </form>
     </section>

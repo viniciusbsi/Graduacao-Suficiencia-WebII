@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import Group, User
 from django.db.models import Q
 from django.views.generic.edit import UpdateView
-
+from django.views.generic.base import View
 
 # Pra gerar PDF#
 from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER
@@ -35,19 +35,41 @@ class TurmaList(ListView):
     queryset = Turma.objects.all().exclude(excluido=True)
     template_name = 'web1/turmasLista.html'
 
-@login_required
-def seleciona_aluno(request):
-    if 'filtro_aluno' in request.GET:
+class ListaAlunoView(View):
+    template = 'web1/selecionaAlunoPermissao.html'
+    def get(self, request):
+        if 'filtro_aluno' in request.GET:
 
-        alunos = Aluno.objects.filter(Q(nome__icontains=request.GET.get('filtro_aluno'))|
-            Q(curso__nome__icontains=request.GET.get('filtro_aluno'))|
-            Q(matricula__icontains=request.GET.get('filtro_aluno'))|
-            Q(turma__nome__icontains=request.GET.get('filtro_aluno'))).exclude(excluido=True).distinct()
-        print(alunos)
-    else:
-        alunos = Aluno.objects.all().exclude(excluido=True)
+            alunos = Aluno.objects.filter(Q(nome__icontains=request.GET.get('filtro_aluno'))|
+                Q(curso__nome__icontains=request.GET.get('filtro_aluno'))|
+                Q(matricula__icontains=request.GET.get('filtro_aluno'))|
+                Q(turma__nome__icontains=request.GET.get('filtro_aluno'))).exclude(excluido=True).distinct()
+        else:
+            alunos = Aluno.objects.all().exclude(excluido=True)
 
-    return render(request, 'web1/selecionaAlunoPermissao.html', {'alunos': alunos, 'grupo_user': 'nupe'})
+        return render(request, self.template, {'alunos': alunos, 'grupo_user': 'nupe'})
+
+class CadastraPermissaoView(View):
+    template = 'web1/permissaoAdd.html'
+    def get(self, request, id=None):
+        form = PermissaoForm()
+        aluno = Aluno.objects.get(pk=id)
+        return render(request, self.template, {'form': form, 'grupo_user': 'nupe', 'aluno': aluno})
+
+    def post(self, request, id=None):
+        aluno = []
+        form = PermissaoForm(request.POST)
+        if form.is_valid():
+            permissao = form.save(commit=False)
+            funcionario = Funcionario.objects.get(pessoa_funcionario=request.user.id)
+            permissao.funcionario_nupe = funcionario
+            permissao.data = date.today()
+            permissao.save()
+            msg = "Permissão cadastrada com sucesso!"
+            return render(request, 'web1/funcionario_nupe.html', {'msg': msg, 'grupo_user': 'nupe'})
+        else:
+            print form.errors
+        return render(request, self.template, {'form': form, 'grupo_user': 'nupe', 'aluno': aluno})
 
 
 def login_verifica_grupo(request):
@@ -66,28 +88,6 @@ def login_verifica_grupo(request):
                               {'permissoes': permissoes, 'grupo_user': 'professor'})
     else:
         return redirect('/accounts/login/')
-
-
-@login_required
-def cadastra_permissao(request, id):
-    aluno = []
-    if request.method == "POST":
-        form = PermissaoForm(request.POST)
-        if form.is_valid():
-            permissao = form.save(commit=False)
-            funcionario = Funcionario.objects.get(pessoa_funcionario=request.user.id)
-            permissao.funcionario_nupe = funcionario
-            permissao.data = date.today()
-            permissao.save()
-            msg = "Permissão cadastrada com sucesso!"
-            return render(request, 'web1/funcionario_nupe.html', {'msg': msg, 'grupo_user': 'nupe'})
-        else:
-            print form.errors
-    else:
-        form = PermissaoForm()
-        aluno = Aluno.objects.get(pk=id)
-    return render(request, 'web1/permissaoAdd.html', {'form': form, 'grupo_user': 'nupe', 'aluno': aluno})
-
 
 @login_required
 def edita_permissao(request, id, id_aluno):

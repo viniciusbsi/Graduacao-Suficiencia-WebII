@@ -1,4 +1,5 @@
 {% extends 'web1/base.html' %}
+{% load i18n %}
 
 {% block content %}
     <section class="column"></section>
@@ -16,19 +17,17 @@
             {% endif %}
             <section class="ui message">
                 <section class="header">
-                    Sistema de Controle de Permancência
+                    {% trans "Sistema de Controle de Permancência" %}
                 </section>
-                <p>Este sistema foi criado com âmbito de avaliação para a disciplina de Desenvolvimento Web 1 do curso
-                    de Bacharelado em Sistemas de Informação
-                    do Instituto Federal Catarinense Campus Araquari. </p>
+                <p>{% trans "Este sistema foi criado com âmbito de avaliação para a disciplina de Desenvolvimento Web 1 do curso de Bacharelado em Sistemas de Informação do Instituto Federal Catarinense Campus Araquari." %}</p>
                 <p>
-                    Esta aplicação tem por objetivo realizar o controle de:
+                    {% trans "Esta aplicação tem por objetivo realizar o controle de" %}
                 <ol>
-                    <li>Cadastro de funcionários do Núcleo Pedagógico</li>
-                    <li>Cadastro de alunos</li>
-                    <li>Cadastro de cursos</li>
-                    <li>Cadastro de turmas</li>
-                    <li>Criação de permissões</li>
+                    <li>{% trans "Cadastro de funcionários do Núcleo Pedagógico" %}</li>
+                    <li>{% trans "Cadastro de alunos" %}</li>
+                    <li>{% trans "Cadastro de cursos" %}</li>
+                    <li>{% trans "Cadastro de turmas" %}</li>
+                    <li>{% trans "Criação de permissões" %}</li>
                 </ol>
                 </p>
             </section>

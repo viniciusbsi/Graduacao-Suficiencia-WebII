@@ -1,7 +1,9 @@
 {% load staticfiles user_tags %}
+{% load static %}
+{% load i18n %}
 <html>
 <head>
-    <title>Sistema de Controle de Permanência</title>
+    <title>{% trans "Sistema de Controle de Permanência" %}</title>
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'semanticui/semantic.min.css' %}">
     <script type="application/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
@@ -20,52 +22,53 @@
     </section>
     <h3 class="item header">
         <span class="sub header">
-            <b>SISTEMA DE CONTROLE DE PERMANÊNCIA</b>
+            {% trans "SISTEMA DE CONTROLE DE PERMANÊNCIA" %}
         </span>
     </h3>
-    {% if user.is_authenticated %}
-        <section class="right menu">
+    <section class="right menu">
         <span class="item">
-            <i class="ui right large user icon"></i>
-            {{ user.username }}
+            {% include "web1/idiomas.html" %}
         </span>
+        {% if user.is_authenticated %}
+            <span class="item">
+                <i class="ui right large user icon"></i>
+                {{ user.username }}
+            </span>
             <a href="{% url 'django.contrib.auth.views.logout' %}" class="item">
                 <i class="sign out icon"></i>
                 Sair
             </a>
-        </section>
-    {% endif %}
+        {% endif %}
+    </section>
 </nav>
 <article class="ui centered grid stackable">
     {% if user.is_authenticated and request.user|has_group:"Nupe" %}
         <section class="ui two wide column vertical menu scp-menu">
             <a class="item" href="{% url 'web1.views.login_verifica_grupo' %}"><i class="left-aligned home icon"></i>Home</a>
-            <a class="item" href="{% url 'web1.views.seleciona_aluno' %}"><i class="left-aligned write icon"></i>Criar Permissão</a>
-            <a class="item" href="{% url 'web1.views.lista_permissoes' %}"><i class="left-aligned history icon"></i>Histórico</a>
+            <a class="item" href="{% url 'seleciona_aluno' %}"><i class="left-aligned write icon"></i>{% trans "Criar Permissão" %}</a>
+            <a class="item" href="{% url 'web1.views.lista_permissoes' %}"><i class="left-aligned history icon"></i>{% trans "Histórico" %}</a>
             <section class="ui dropdown item">
                 <i class="left-aligned add icon"></i>
                 <i class="dropdown icon"></i>
-                Cadastros
+                {% trans "Cadastros" %}
                 <section class="menu">
-                    <a class="item" href="{% url 'web1.views.cadastra_aluno' %}"><i class="add icon"></i>Aluno</a>
-                    <a class="item" href="{% url 'web1.views.cadastra_funcionario' %}"><i class="add icon"></i>Funcionario</a>
-                    <a class="item" href="{% url 'web1.views.cadastra_curso' %}"><i class="add icon"></i>Curso</a>
-                    <a class="item" href="{% url 'web1.views.cadastra_turma' %}"><i class="add icon"></i>Turma</a>
-                    <a class="item" href="{% url 'web1.views.cadastra_tipo_permissao' %}"><i class="add icon"></i>Tipo
-                        de permissão</a>
-                    <a class="item" href="{% url 'web1.views.cadastra_tipo_oferta' %}"><i class="add icon"></i>Tipo de
-                        oferta</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_aluno' %}"><i class="add icon"></i>{% trans "Aluno" %}</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_funcionario' %}"><i class="add icon"></i>{% trans "Funcionario" %}</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_curso' %}"><i class="add icon"></i>{% trans "Curso" %}</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_turma' %}"><i class="add icon"></i>{% trans "Turma" %}</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_tipo_permissao' %}"><i class="add icon"></i>{% trans "Tipo de permissão" %}</a>
+                    <a class="item" href="{% url 'web1.views.cadastra_tipo_oferta' %}"><i class="add icon"></i>{% trans "Tipo de oferta" %}</a>
                 </section>
             </section>
             <section class="ui dropdown item">
                 <i class="left-aligned sidebar icon"></i>
                 <i class="dropdown icon"></i>
-                Registros
+                {% trans "Registros" %}
                 <section class="menu">
-                    <a class="item" href="{% url 'aluno_list' %}"><i class="sidebar icon"></i>Alunos</a>
-                    <a class="item" href="{% url 'funcionario_list' %}"><i class="sidebar icon"></i>Funcionarios</a>
-                    <a class="item" href="{% url 'curso_list' %}"><i class="sidebar icon"></i>Cursos</a>
-                    <a class="item" href="{% url 'turma_list' %}"><i class="sidebar icon"></i>Turmas</a>
+                    <a class="item" href="{% url 'aluno_list' %}"><i class="sidebar icon"></i>{% trans "Alunos" %}</a>
+                    <a class="item" href="{% url 'funcionario_list' %}"><i class="sidebar icon"></i>{% trans "Funcionarios" %}</a>
+                    <a class="item" href="{% url 'curso_list' %}"><i class="sidebar icon"></i>{% trans "Cursos" %}</a>
+                    <a class="item" href="{% url 'turma_list' %}"><i class="sidebar icon"></i>{% trans "Turmas" %}</a>
                 </section>
             </section>
         </section>

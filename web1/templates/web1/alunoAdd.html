@@ -1,10 +1,10 @@
 {% extends 'web1/base.html' %}
-
+{% load i18n %}
 {% block content %}
     <section class="one wide column"></section>
     <section class="twelve wide column">
         <section class="espaco"></section>
-        <h1><i class="plus icon"></i> Cadastro de Aluno</h1>
+        <h1><i class="plus icon"></i>{% trans "Cadastro de Aluno" %}</h1>
         {% if aluno %}
             <form class="ui segment form" method="POST" action="{% url 'web1.views.edita_aluno' aluno.id%}">
         {% else %}
@@ -13,7 +13,7 @@
             {% csrf_token %}
             <section class="fields">
                 <section class="eight wide field">
-                    <label>Nome:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Nome" %}<i class="asterisk icon red"></i></label>
                     {{ form.nome }}
                     {% if form.nome.errors %}
                         <section class="ui pointing red basic label">
@@ -22,7 +22,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>E-mail:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "E-mail" %}<i class="asterisk icon red"></i></label>
                     {{ form.email }}
                     {% if form.email.errors %}
                         <section class="ui pointing red basic label">
@@ -31,7 +31,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Matrícula:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Matrícula" %}<i class="asterisk icon red"></i></label>
                     <section class="matricula">
                         {{ form.matricula }}
                     </section>
@@ -44,7 +44,7 @@
             </section>
             <section class="fields">
                 <section class="four wide field">
-                    <label>Nome pai:</label>
+                    <label>{% trans "Nome pai" %}</label>
                     {{ form.nome_pai }}
                     {% if form.nome_pai.errors %}
                         <section class="ui pointing red basic label">
@@ -53,7 +53,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Nome mãe:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Nome mãe" %}<i class="asterisk icon red"></i></label>
                     {{ form.nome_mae }}
                     {% if form.nome_mae.errors %}
                         <section class="ui pointing red basic label">
@@ -62,7 +62,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Tel. Aluno:</label>
+                    <label>{% trans "Tel. Aluno" %}</label>
                     <section class="telefone">
                         {{ form.telefone_aluno }}
                     </section>
@@ -73,7 +73,7 @@
                     {% endif %}
                 </section>
                 <section class="four wide field">
-                    <label>Tel. responsável:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Tel. responsável" %}<i class="asterisk icon red"></i></label>
                     <section class="telefone">
                         {{ form.telefone_responsavel }}
                     </section>
@@ -86,7 +86,7 @@
             </section>
             <section class="two fields">
                 <section class="field">
-                    <label>Curso:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Curso" %}:<i class="asterisk icon red"></i></label>
                     {{ form.curso }}
                     {% if form.curso.errors %}
                         <section class="ui pointing red basic label">
@@ -95,7 +95,7 @@
                     {% endif %}
                 </section>
                 <section class="field">
-                    <label>Turma:<i class="asterisk icon red"></i></label>
+                    <label>{% trans "Turma" %}:<i class="asterisk icon red"></i></label>
                     {{ form.turma }}
                     {% if form.turma.errors %}
                         <section class="ui pointing red basic label">
@@ -105,8 +105,8 @@
                 </section>
             </section>
             <section class="ui two buttons">
-                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
-                <input class="ui button fluid positive" type="submit" value="Cadastrar">
+                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">{% trans "Voltar" %}</a>
+                <input class="ui button fluid positive" type="submit" value="{% trans "Cadastrar" %}">
             </section>
         </form>
     </section>

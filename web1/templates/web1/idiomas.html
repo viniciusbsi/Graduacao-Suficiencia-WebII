@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% get_available_languages as LANGUAGES %}
+
+<form action="/i18n/setlang/" method="post" name="idioma">
+    {% csrf_token %}
+    <select class="ui dropdown" name="language" onchange="submitFormIdioma();">
+        <div class="menu">
+            {% for lang in LANGUAGES %}
+                <option class="item" value="{{ lang.0 }}">{{ lang.1 }}</option>
+            {% endfor %}
+        </div>
+    </select>
+</form>

@@ -1,5 +1,5 @@
-{% extends 'web1/base.html' %}
-
+{%extends 'web1/base.html' %}
+{% load i18n %}
 {% block content %}
     <section class="column"></section>
     <section class="twelve wide column">
@@ -9,7 +9,7 @@
             <form class="ui form segment" method="POST"
                   action="{% url 'web1.views.edita_permissao' permissao.id aluno.id %}">
         {% else %}
-            <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_permissao' aluno.id %}">
+            <form class="ui form segment" method="POST" action="{% url 'cadastra_permissao' aluno.id %}">
         {% endif %}
 
         {% csrf_token %}
@@ -41,7 +41,7 @@
             </section>
         </section>
         <section class="field">
-                <label>Descrição:<i class="asterisk icon red"></i></label>
+                <label>{% trans "Descrição %}:<i class="asterisk icon red"></i></label>
                 {{ form.descricao }}
                 {% if form.descricao.errors %}
                     <section class="ui pointing red basic label">

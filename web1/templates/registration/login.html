@@ -23,18 +23,21 @@
             <b>SISTEMA DE CONTROLE DE PERMANÊNCIA</b>
         </span>
     </h3>
-    {% if user.is_authenticated %}
-        <section class="right menu">
+    <section class="right menu">
         <span class="item">
-            <i class="ui right large user icon"></i>
-            {{ user.username }}
+            {% include "web1/idiomas.html" %}
         </span>
+        {% if user.is_authenticated %}
+            <span class="item">
+                <i class="ui right large user icon"></i>
+                {{ user.username }}
+            </span>
             <a href="{% url 'django.contrib.auth.views.logout' %}" class="item">
                 <i class="sign out icon"></i>
                 Sair
             </a>
-        </section>
-    {% endif %}
+        {% endif %}
+    </section>
 </nav>
 <article class="ui centered grid stackable">
     <div class="ui six wide column ">
