@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-18 15:11-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: web1/templates/web1/alunoAdd.html:7
+msgid "Cadastro de Aluno"
+msgstr "Register of Student"
+
+#: web1/templates/web1/alunoAdd.html:16 web1/templates/web1/alunosLista.html:11
+#: web1/templates/web1/cursoAdd.html:16
+#: web1/templates/web1/funcionarioAdd.html:16
+#: web1/templates/web1/funcionariosLista.html:12
+#: web1/templates/web1/selecionaAlunoPermissao.html:25
+#: web1/templates/web1/tipoOfertaAdd.html:12
+#: web1/templates/web1/tipoPermissaoAdd.html:11
+#: web1/templates/web1/turmaAdd.html:16
+msgid "Nome"
+msgstr "Name"
+
+#: web1/templates/web1/alunoAdd.html:25
+#: web1/templates/web1/funcionarioAdd.html:34
+#: web1/templates/web1/funcionariosLista.html:14
+msgid "E-mail"
+msgstr "E-mail"
+
+#: web1/templates/web1/alunoAdd.html:34 web1/templates/web1/alunosLista.html:14
+#: web1/templates/web1/funcionarioAdd.html:54
+#: web1/templates/web1/funcionariosLista.html:15
+#: web1/templates/web1/selecionaAlunoPermissao.html:28
+msgid "Matrícula"
+msgstr "Registration"
+
+#: web1/templates/web1/alunoAdd.html:47
+msgid "Nome pai"
+msgstr "Father name"
+
+#: web1/templates/web1/alunoAdd.html:56
+msgid "Nome mãe"
+msgstr "Mother name"
+
+#: web1/templates/web1/alunoAdd.html:65
+msgid "Tel. Aluno"
+msgstr "Tel. Student"
+
+#: web1/templates/web1/alunoAdd.html:76
+msgid "Tel. responsável"
+msgstr "Tel. Responsible"
+
+#: web1/templates/web1/alunoAdd.html:89 web1/templates/web1/alunosLista.html:12
+#: web1/templates/web1/base.html:57
+#: web1/templates/web1/selecionaAlunoPermissao.html:26
+msgid "Curso"
+msgstr "Course"
+
+#: web1/templates/web1/alunoAdd.html:98 web1/templates/web1/alunosLista.html:13
+#: web1/templates/web1/base.html:58
+#: web1/templates/web1/selecionaAlunoPermissao.html:27
+msgid "Turma"
+msgstr "Class"
+
+#: web1/templates/web1/alunoAdd.html:108 web1/templates/web1/cursoAdd.html:64
+#: web1/templates/web1/funcionarioAdd.html:93
+#: web1/templates/web1/tipoOfertaAdd.html:21
+#: web1/templates/web1/tipoPermissaoAdd.html:20
+#: web1/templates/web1/turmaAdd.html:46
+msgid "Voltar"
+msgstr "Back"
+
+#: web1/templates/web1/alunoAdd.html:109 web1/templates/web1/cursoAdd.html:65
+#: web1/templates/web1/tipoOfertaAdd.html:22
+#: web1/templates/web1/tipoPermissaoAdd.html:21
+#: web1/templates/web1/turmaAdd.html:47
+msgid "Cadastrar"
+msgstr "Register"
+
+#: web1/templates/web1/alunosLista.html:7
+msgid "Lista de Alunos"
+msgstr "List Of Students"
+
+#: web1/templates/web1/alunosLista.html:15
+#: web1/templates/web1/cursosLista.html:14
+#: web1/templates/web1/funcionariosLista.html:16
+#: web1/templates/web1/permissaoLista.html:27
+#: web1/templates/web1/turmasLista.html:13
+msgid "Ações"
+msgstr "Actions"
+
+#: web1/templates/web1/alunosLista.html:25
+#: web1/templates/web1/cursosLista.html:22
+#: web1/templates/web1/funcionariosLista.html:26
+#: web1/templates/web1/permissaoLista.html:66
+#: web1/templates/web1/turmasLista.html:21
+msgid "Editar"
+msgstr "Edit"
+
+#: web1/templates/web1/alunosLista.html:27
+#: web1/templates/web1/cursosLista.html:24
+#: web1/templates/web1/funcionariosLista.html:28
+#: web1/templates/web1/permissaoLista.html:68
+#: web1/templates/web1/turmasLista.html:23
+msgid "Excluir"
+msgstr "Delete"
+
+#: web1/templates/web1/base.html:6
+msgid "Sistema de Controle de Permanência"
+msgstr "Permanency Control System"
+
+#: web1/templates/web1/base.html:25
+msgid "SISTEMA DE CONTROLE DE PERMANÊNCIA"
+msgstr "PERMANENCY CONTROL SYSTEM"
+
+#: web1/templates/web1/base.html:48
+#: web1/templates/web1/selecionaAlunoPermissao.html:10
+msgid "Criar Permissão"
+msgstr "Create Permition"
+
+#: web1/templates/web1/base.html:49 web1/templates/web1/permissaoLista.html:8
+msgid "Histórico"
+msgstr "Historic"
+
+#: web1/templates/web1/base.html:53
+msgid "Cadastros"
+msgstr "Registers"
+
+#: web1/templates/web1/base.html:55 web1/templates/web1/permissaoLista.html:20
+msgid "Aluno"
+msgstr "Student"
+
+#: web1/templates/web1/base.html:56
+msgid "Funcionario"
+msgstr "Employed"
+
+#: web1/templates/web1/base.html:59
+msgid "Tipo de permissão"
+msgstr "Type of permition"
+
+#: web1/templates/web1/base.html:60
+msgid "Tipo de oferta"
+msgstr "Type of offert"
+
+#: web1/templates/web1/base.html:66
+msgid "Registros"
+msgstr "Registers"
+
+#: web1/templates/web1/base.html:68
+msgid "Alunos"
+msgstr "Students"
+
+#: web1/templates/web1/base.html:69
+msgid "Funcionarios"
+msgstr "Employees"
+
+#: web1/templates/web1/base.html:70
+msgid "Cursos"
+msgstr "Courses"
+
+#: web1/templates/web1/base.html:71
+msgid "Turmas"
+msgstr "Classes"
+
+#: web1/templates/web1/cursoAdd.html:7
+msgid "Cadastrar Curso"
+msgstr "Register Course"
+
+#: web1/templates/web1/cursoAdd.html:25
+msgid "Coordenador"
+msgstr "Coordinator"
+
+#: web1/templates/web1/cursoAdd.html:36
+msgid "Duração"
+msgstr "Duration"
+
+#: web1/templates/web1/cursoAdd.html:45
+msgid "Tipo de Oferta"
+msgstr "Type of Offert"
+
+#: web1/templates/web1/cursoAdd.html:55 web1/templates/web1/cursosLista.html:13
+#: web1/templates/web1/permissaoLista.html:21
+#: web1/templates/web1/turmaAdd.html:37 web1/templates/web1/turmasLista.html:11
+msgid "Descrição"
+msgstr "Description"
+
+#: web1/templates/web1/cursosLista.html:8
+msgid "Lista de Cursos   "
+msgstr "List of Courses"
+
+#: web1/templates/web1/funcionarioAdd.html:7
+msgid "Cadastro de Funcionário"
+msgstr "Register Employer"
+
+#: web1/templates/web1/funcionarioAdd.html:25
+msgid "Sobrenome"
+msgstr "Last name"
+
+#: web1/templates/web1/funcionarioAdd.html:43
+#: web1/templates/web1/funcionariosLista.html:13
+msgid "Função"
+msgstr "Function"
+
+#: web1/templates/web1/funcionarioAdd.html:65
+msgid "Login"
+msgstr "Login"
+
+#: web1/templates/web1/funcionarioAdd.html:74
+msgid "Senha"
+msgstr "Password"
+
+#: web1/templates/web1/funcionarioAdd.html:83
+msgid "Senha novamente"
+msgstr "Password again"
+
+#: web1/templates/web1/funcionario_nupe.html:20
+msgid "Sistema de Controle de Permancência"
+msgstr "Permanency Control System"
+
+#: web1/templates/web1/funcionario_nupe.html:22
+msgid ""
+"Este sistema foi criado com âmbito de avaliação para a disciplina de "
+"Desenvolvimento Web 1 do curso de Bacharelado em Sistemas de Informação do "
+"Instituto Federal Catarinense Campus Araquari."
+msgstr "This system was built based on assessments for the development of Web 1 of the Bachelor's degree in Information Systems of the Catarinense Federal Campus Araquari Institute."
+
+#: web1/templates/web1/funcionario_nupe.html:24
+msgid "Esta aplicação tem por objetivo realizar o controle de"
+msgstr "This application has the objective of controlling the"
+
+#: web1/templates/web1/funcionario_nupe.html:26
+msgid "Cadastro de funcionários do Núcleo Pedagógico"
+msgstr "Registration of employees of the Pedagogical Center"
+
+#: web1/templates/web1/funcionario_nupe.html:27
+msgid "Cadastro de alunos"
+msgstr "Register of students"
+
+#: web1/templates/web1/funcionario_nupe.html:28
+msgid "Cadastro de cursos"
+msgstr "Register of courses"
+
+#: web1/templates/web1/funcionario_nupe.html:29
+msgid "Cadastro de turmas"
+msgstr "Register od classes"
+
+#: web1/templates/web1/funcionario_nupe.html:30
+msgid "Criação de permissões"
+msgstr "Create permitions"
+
+#: web1/templates/web1/funcionariosLista.html:8
+msgid "Lista de Funcionários"
+msgstr "List of employees"
+
+#: web1/templates/web1/permissaoLista.html:13
+#: web1/templates/web1/selecionaAlunoPermissao.html:18
+msgid "Pesquisar"
+msgstr "Search"
+
+#: web1/templates/web1/permissaoLista.html:22
+msgid "Funcionario Nupe"
+msgstr "Nupe Employee"
+
+#: web1/templates/web1/permissaoLista.html:23
+msgid "Hora"
+msgstr "Hour"
+
+#: web1/templates/web1/permissaoLista.html:24
+msgid "Professor"
+msgstr "Teacher"
+
+#: web1/templates/web1/permissaoLista.html:25
+msgid "Portaria"
+msgstr "Concierge"
+
+#: web1/templates/web1/permissaoLista.html:42
+#: web1/templates/web1/permissaoLista.html:54
+msgid "Validar"
+msgstr "Validate"
+
+#: web1/templates/web1/selecionaAlunoPermissao.html:11
+msgid "Selecione um aluno para criar a permissão"
+msgstr "Select a student to create the permission"
+
+#: web1/templates/web1/turmaAdd.html:7
+msgid "Cadastrar turma"
+msgstr "Register class"
+
+#: web1/templates/web1/turmaAdd.html:25 web1/templates/web1/turmasLista.html:12
+msgid "Ano"
+msgstr "Year"
+
+#: web1/templates/web1/turmasLista.html:7
+msgid "Lista de Turmas"
+msgstr "List of Classes"
