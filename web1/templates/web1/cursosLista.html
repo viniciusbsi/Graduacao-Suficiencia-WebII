@@ -19,9 +19,9 @@
                 <tr>
                     <td>{{ obj.id }}</td>
                     <td>{{ obj.descricao }}</td>
-                    <td><a href="{% url 'web1.views.edita_curso' obj.id %}" class="link">{% trans "Editar" %}</a>
+                    <td><a href="{% url 'edita_curso' obj.id %}" class="link">{% trans "Editar" %}</a>
                         </br>
-                        <a href="{% url 'web1.views.exclui_curso' obj.id%}" class="link">{% trans "Excluir" %}</a>
+                        <a href="{% url 'exclui_curso' obj.id%}" class="link">{% trans "Excluir" %}</a>
                     </td>
                 </tr>
             {% endfor %}

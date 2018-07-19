@@ -22,9 +22,9 @@
                     <td>{{ obj.curso }}</td>
                     <td>{{ obj.turma }}</td>
                     <td>{{ obj.matricula }}</td>
-                    <td><a href="{% url 'web1.views.edita_aluno' obj.id %}" class="link">{% trans "Editar" %}</a>
+                    <td><a href="{% url 'edita_aluno' obj.id %}" class="link">{% trans "Editar" %}</a>
                         </br>
-                        <a href="{% url 'web1.views.exclui_aluno' obj.id%}" class="link">{% trans "Excluir" %}</a></td>
+                        <a href="{% url 'exclui_aluno' obj.id%}" class="link">{% trans "Excluir" %}</a></td>
                 </tr>
             {% endfor %}
             </tbody>

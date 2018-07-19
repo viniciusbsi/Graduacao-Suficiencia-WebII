@@ -6,9 +6,9 @@
         <section class="espaco"></section>
         <h1><i class="plus icon"></i>{% trans "Cadastrar Curso" %}</h1>
         {% if curso %}
-            <form class="ui form segment" method="POST" action="{% url 'web1.views.edita_curso' curso.id %}">
+            <form class="ui form segment" method="POST" action="{% url 'edita_curso' curso.id %}">
         {% else %}
-            <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_curso' %}">
+            <form class="ui form segment" method="POST" action="{% url 'cadastra_curso' %}">
         {% endif %}
         {% csrf_token %}
         <section class="two fields">
@@ -61,7 +61,7 @@
             {% endif %}
         </section>
         <section class="ui two buttons">
-            <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">{% trans "Voltar" %}</a>
+            <a class="ui button fluid" href="{% url 'verifica_grupo' %}">{% trans "Voltar" %}</a>
             <input class="ui button fluid positive" type="submit" value="{% trans "Cadastrar" %}">
         </section>
         </form>

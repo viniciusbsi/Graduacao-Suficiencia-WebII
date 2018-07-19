@@ -23,9 +23,9 @@
                     <td>{{ obj.pessoa_funcionario.groups.all.0.name }}</td>
                     <td>{{ obj.pessoa_funcionario.email }}</td>
                     <td>{{ obj.matricula }}</td>
-                    <td><a href="{% url 'web1.views.edita_funcionario' obj.id %}" class="link">{% trans "Editar" %}</a>
+                    <td><a href="{% url 'edita_funcionario' obj.id %}" class="link">{% trans "Editar" %}</a>
                         </br>
-                        <a href="{% url 'web1.views.exclui_funcionario' obj.id%}" class="link">{% trans "Excluir" %}</a></td>
+                        <a href="{% url 'exclui_funcionario' obj.id%}" class="link">{% trans "Excluir" %}</a></td>
                 </tr>
             {% endfor %}
             </tbody>

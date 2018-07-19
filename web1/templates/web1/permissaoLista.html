@@ -39,7 +39,7 @@
                         {% if permissao.verificado_professor == None %}
                             <i class="remove circle outline icon red large"></i>
                             {% if grupo_user == 'professor' %}
-                                (<a href="{% url 'web1.views.ValidaPermissaoProfessor' permissao.id %}" class="link">{% trans "Validar" %}</a>
+                                (<a href="{% url 'valida_permissao_professor' permissao.id %}" class="link">{% trans "Validar" %}</a>
                                 )
                             {% endif %}
                         {% else %}
@@ -51,7 +51,7 @@
                         {% if permissao.verificado_portaria == None %}
                             <i class="remove circle outline icon red large"></i>
                             {% if grupo_user == 'portaria' %}
-                                (<a href="{% url 'web1.views.ValidaPermissaoPortaria' permissao.id %}" class="link">{% trans "Validar" %}</a>
+                                (<a href="{% url 'valida_permissao_portaria' permissao.id %}" class="link">{% trans "Validar" %}</a>
                                 )
                             {% endif %}
 
@@ -62,10 +62,10 @@
                     </td>
                     {% if user.is_authenticated and request.user|has_group:"Nupe" %}
                         <td>
-                            <a href="{% url 'web1.views.edita_permissao' permissao.id permissao.aluno.id %}"
+                            <a href="{% url 'edita_permissao' permissao.id permissao.aluno.id %}"
                                class="link">{% trans "Editar" %}</a>
                             </br>
-                            <a href="{% url 'web1.views.exclui_permissao' permissao.id %}" class="link">{% trans "Excluir" %}</a>
+                            <a href="{% url 'exclui_permissao' permissao.id %}" class="link">{% trans "Excluir" %}</a>
                         </td>
                     {% endif %}
                 </tr>

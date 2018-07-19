@@ -41,7 +41,7 @@
             </section>
         </section>
         <section class="field">
-                <label>{% trans "Descrição %}:<i class="asterisk icon red"></i></label>
+                <label>{% trans "Descrição" %}:<i class="asterisk icon red"></i></label>
                 {{ form.descricao }}
                 {% if form.descricao.errors %}
                     <section class="ui pointing red basic label">
@@ -50,7 +50,7 @@
                 {% endif %}
             </section>
         <section class="ui two buttons">
-            <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">Voltar</a>
+            <a class="ui button fluid" href="{% url 'verifica_grupo' %}">Voltar</a>
             <input class="ui button fluid positive" type="submit" value="Cadastrar">
         </section>
         </form>

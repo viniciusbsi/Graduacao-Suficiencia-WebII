@@ -6,6 +6,7 @@
     {% csrf_token %}
     <select class="ui dropdown" name="language" onchange="submitFormIdioma();">
         <div class="menu">
+            <option class="item" value="">Idioma</option>
             {% for lang in LANGUAGES %}
                 <option class="item" value="{{ lang.0 }}">{{ lang.1 }}</option>
             {% endfor %}

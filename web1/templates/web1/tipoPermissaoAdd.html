@@ -5,7 +5,7 @@
     <section class="twelve wide column">
         <section class="espaco"></section>
         <h1><i class="plus icon"></i>Cadastrar Tipo de Permissão</h1>
-        <form class="ui form segment" method="POST" action="{% url 'web1.views.cadastra_tipo_permissao' %}">
+        <form class="ui form segment" method="POST" action="{% url 'cadastra_tipo_permissao' %}">
             {% csrf_token %}
             <section class="field">
                 <label>{% trans "Nome" %}:<i class="asterisk icon red"></i></label>
@@ -17,7 +17,7 @@
                 {% endif %}
             </section>
             <section class="ui two buttons">
-                <a class="ui button fluid" href="{% url 'web1.views.login_verifica_grupo' %}">{% trans "Voltar" %}</a>
+                <a class="ui button fluid" href="{% url 'verifica_grupo' %}">{% trans "Voltar" %}</a>
                 <input class="ui button fluid positive" type="submit" value="{% trans "Cadastrar" %}">
             </section>
         </form>
